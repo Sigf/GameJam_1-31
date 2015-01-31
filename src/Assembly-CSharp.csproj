@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\charController2D.cs" />
      <Compile Include="Assets\Scripts\charControllerParameters.cs" />
      <Compile Include="Assets\Scripts\controllerState.cs" />
+     <Compile Include="Assets\Scripts\door_behavior.cs" />
      <Compile Include="Assets\Scripts\inputState.cs" />
      <Compile Include="Assets\Scripts\player.cs" />
      <Compile Include="Assets\Trash\charController.cs" />
