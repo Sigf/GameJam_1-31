@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\inputState.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\controllerParameters.cs">
     <Files>
-      <File FileName="Assets\Scripts\inputState.cs" Line="28" Column="4" />
+      <File FileName="Assets\Scripts\controllerParameters.cs" Line="9" Column="54" />
+      <File FileName="Assets\Scripts\inputState.cs" Line="18" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
