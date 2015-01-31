@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class inputState {
+public class inputStatetrash {
 	public bool wPressed{get; set;}
-	public bool sPressed{get; set;}
-	public bool dPressed{get; set;}
-	public bool aPressed{get; set;}
+	public bool aPressed {get; set;}
+	public bool sPressed {get; set;}
+	public bool dPressed {get; set;}
 	public bool onePressed {get; set;}
 	public bool twoPressed {get; set;}
 	public bool threePressed {get; set;}
@@ -13,19 +13,19 @@ public class inputState {
 	public bool fivePressed {get; set;}
 	public bool atkPressed {get; set;}
 
-	public void Reset(){
-		wPressed = 
-			sPressed = 
-				dPressed = 
-				aPressed = 
-				onePressed =
-				twoPressed =
-				threePressed =
-				fourPressed =
-				fivePressed =
-				atkPressed =
-				false;
-
+	public void Reset()
+	{
+		wPressed =
+			aPressed =
+			sPressed =
+			dPressed =
+			onePressed =
+			twoPressed =
+			threePressed =
+			fourPressed =
+			fivePressed =
+			atkPressed =
+			false;
 	}
 
 	public void printState()

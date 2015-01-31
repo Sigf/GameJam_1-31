@@ -1,9 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\controllerParameters.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Trash\inputStatetrash.cs">
     <Files>
-      <File FileName="Assets\Scripts\controllerParameters.cs" Line="9" Column="54" />
-      <File FileName="Assets\Scripts\inputState.cs" Line="18" Column="13" />
+      <File FileName="Assets\Scripts\charController2D.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\charControllerParameters.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\controllerState.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\inputState.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Trash\inputStatetrash.cs" Line="13" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
