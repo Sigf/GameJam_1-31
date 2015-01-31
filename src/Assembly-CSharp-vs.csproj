@@ -46,7 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\charController2D.cs" />
+     <Compile Include="Assets\Scripts\charControllerParameters.cs" />
+     <Compile Include="Assets\Scripts\controllerState.cs" />
      <Compile Include="Assets\Scripts\inputState.cs" />
+     <Compile Include="Assets\Scripts\player.cs" />
+     <Compile Include="Assets\Trash\charController.cs" />
+     <Compile Include="Assets\Trash\charParameters.cs" />
+     <Compile Include="Assets\Trash\inputStatetrash.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
