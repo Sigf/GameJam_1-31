@@ -6,4 +6,10 @@ Team:
 Sebastien Hutt
 Jesse Herzenach
 
-I EDITED IT!
+
+Theme:
+---
+
+
+Synopsis:
+---
