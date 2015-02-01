@@ -17,13 +17,17 @@ public class door_behavior : MonoBehaviour {
 	void Update () {
 	}
 
-	void OnTriggerEnter(Collider other){
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.tag == "Player"){
 		_renderer.sprite = open_spr;
 		print ("hit!");
+		}
 	}
 
-	void OnTriggerExit (Collider other) {
+	void OnTriggerExit2D (Collider2D other) {
+		if(other.tag == "Player"){
 		_renderer.sprite = close_spr;
 		print ("bye");
+		}
 	}
 }
