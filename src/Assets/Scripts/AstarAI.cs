@@ -69,7 +69,7 @@ public class AstarAI : MonoBehaviour
 		//If we are, proceed to follow the next waypoint
 		if(lastPosition != target.position)
 		{
-			if(Mathf.Abs (Vector3.Magnitude(target.position - lastPosition)) >= 0.2f){
+			if(Mathf.Abs (Vector3.Magnitude(target.position - lastPosition)) >= 0.4f){
 				seeker.StartPath( transform.position, target.position, OnPathComplete );
 				lastPosition = target.position;
 			}
