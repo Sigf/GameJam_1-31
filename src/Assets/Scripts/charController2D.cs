@@ -17,6 +17,7 @@ public class charController2D : MonoBehaviour {
 	private Vector2 _rayTopLeft;
 	private Vector2 _rayBottomLeft;
 	private Vector2 _rayBottomRight;
+
 	public void Awake()
 	{
 		State = new controllerState();
