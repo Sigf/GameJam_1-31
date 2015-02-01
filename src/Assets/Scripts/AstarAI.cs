@@ -48,11 +48,6 @@ public class AstarAI : MonoBehaviour
 	
 	public void FixedUpdate ()
 	{
-		if(lastPosition != target.position)
-		{
-			seeker.StartPath( transform.position, target.position, OnPathComplete );
-			lastPosition = target.position;
-		}
 		if (path == null)
 		{
 			//We have no path to move after yet
@@ -72,6 +67,13 @@ public class AstarAI : MonoBehaviour
 		
 		//Check if we are close enough to the next waypoint
 		//If we are, proceed to follow the next waypoint
+		if(lastPosition != target.position)
+		{
+			if(Mathf.Abs (Vector3.Magnitude(target.position - lastPosition)) >= 0.2f){
+				seeker.StartPath( transform.position, target.position, OnPathComplete );
+				lastPosition = target.position;
+			}
+		}
 		if (Vector3.Distance( transform.position, path.vectorPath[ currentWaypoint ] ) < nextWaypointDistance)
 		{
 			currentWaypoint++;
