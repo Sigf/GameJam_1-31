@@ -32,11 +32,13 @@ public class AstarAI : MonoBehaviour
 	private Vector3 _velocity;
 	private BoxCollider2D _boxCollider;
 	private Vector3 _rayTopLeft, _rayBottomLeft, _rayBottomRight;
+	private bool isCollidingLeft, isCollidingRight, isCollidingAbove, isCollidingBelow;
 	
 	public void Start ()
 	{
 		seeker = GetComponent<Seeker>();
 		_velocity = new Vector3(0.0f, 0.0f, 0.0f);
+		isCollidingLeft = isCollidingRight = isCollidingAbove = isCollidingBelow = false;
 		//Start a new path to the targetPosition, return the result to the OnPathComplete function
 		seeker.StartPath( transform.position, target.position, OnPathComplete );
 		lastPosition = target.position;
@@ -118,6 +120,8 @@ public class AstarAI : MonoBehaviour
 	public void Move(Vector3 deltaMovement)
 	{
 		calculateRayOrigins ();
+		float originalX = deltaMovement.x;
+		float originalY = deltaMovement.y;
 		Debug.Log ("Y: at entry " + deltaMovement.y);
 		if(Mathf.Abs(deltaMovement.x) > 0.001f){
 			moveHorizontally(ref deltaMovement);
@@ -126,6 +130,22 @@ public class AstarAI : MonoBehaviour
 			Debug.Log (deltaMovement.y);
 			moveVertically (ref deltaMovement);
 		}
+		if(isCollidingRight && originalX > 0.0f)
+		{
+			deltaMovement.y = acceleration * Mathf.Sign (deltaMovement.y) * Time.fixedDeltaTime;
+		}
+		else if(isCollidingLeft && originalX < 0.0f){
+			deltaMovement.y = acceleration * Mathf.Sign (deltaMovement.y) * Time.fixedDeltaTime;
+		}
+		if(isCollidingBelow && originalY < 0.0f)
+		{
+			deltaMovement.x = acceleration * Mathf.Sign (deltaMovement.x) * Time.fixedDeltaTime;
+		}
+		else if(isCollidingAbove && originalY > 0.0f)
+		{
+			deltaMovement.x = acceleration * Mathf.Sign (deltaMovement.x) * Time.fixedDeltaTime;;
+		}
+
 		transform.Translate (deltaMovement);
 		Debug.Log (deltaMovement.x + ", " + deltaMovement.y);
 		
@@ -135,6 +155,7 @@ public class AstarAI : MonoBehaviour
 		}
 		_velocity.x = Mathf.Min (_velocity.x, maxSpeed);
 		_velocity.y = Mathf.Min (_velocity.y, maxSpeed);
+		Reset ();
 	}
 	
 	public void moveHorizontally(ref Vector3 deltaMovement)
@@ -159,12 +180,12 @@ public class AstarAI : MonoBehaviour
 			if(isGoingRight)
 			{
 				deltaMovement.x -= skinWidth;
-				//State.isCollidingRight = true;
+				isCollidingRight = true;
 			}
 			else
 			{
 				deltaMovement.x += skinWidth;
-				//State.isCollidingLeft = true;
+				isCollidingLeft = true;
 			}
 			if(rayDistance < skinWidth + .0001f)
 			{
@@ -196,12 +217,12 @@ public class AstarAI : MonoBehaviour
 			if(isGoingUp)
 			{
 				deltaMovement.y -= skinWidth;
-				//State.isCollidingAbove = true;
+				isCollidingAbove = true;
 			}
 			else
 			{
 				deltaMovement.y += skinWidth;
-				//State.isCollidingBelow = true;
+				isCollidingBelow = true;
 			}
 			if(rayDistance < skinWidth + .0001f)
 			{
@@ -209,5 +230,9 @@ public class AstarAI : MonoBehaviour
 			}
 			
 		}
+	}
+	private void Reset()
+	{
+		isCollidingLeft = isCollidingRight = isCollidingAbove = isCollidingBelow = false;
 	}
 }
