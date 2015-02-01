@@ -1,0 +1,54 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	src/Assets/Scenes/test_room.unity
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 5 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   src/Assembly-CSharp-vs.csproj
+#	modified:   src/Assembly-CSharp.csproj
+#	modified:   src/Assets/Prefabs/Player.prefab
+#	new file:   src/Assets/Prefabs/ennemey_electric.prefab
+#	new file:   src/Assets/Prefabs/ennemey_electric.prefab.meta
+#	modified:   src/Assets/Prefabs/floor_temp.prefab.meta
+#	new file:   src/Assets/Prefabs/spr_door.prefab
+#	new file:   src/Assets/Prefabs/spr_door.prefab.meta
+#	new file:   src/Assets/Prefabs/spr_floor1.prefab
+#	new file:   src/Assets/Prefabs/spr_floor1.prefab.meta
+#	new file:   src/Assets/Prefabs/spr_floor2.prefab
+#	new file:   src/Assets/Prefabs/spr_floor2.prefab.meta
+#	new file:   src/Assets/Prefabs/spr_wall.prefab
+#	new file:   src/Assets/Prefabs/spr_wall.prefab.meta
+#	new file:   src/Assets/Prefabs/spr_wall_corner.prefab
+#	new file:   src/Assets/Prefabs/spr_wall_corner.prefab.meta
+#	new file:   src/Assets/Prefabs/tile_floor.prefab
+#	new file:   src/Assets/Prefabs/tile_floor.prefab.meta
+#	modified:   src/Assets/Sprites/Thumbs.db
+#	modified:   src/Assets/Sprites/player_temp.png
+#	deleted:    src/Assets/floor_temp.png
+#	deleted:    src/Assets/floor_temp.png.meta
+#	deleted:    src/Assets/wall_temp.png
+#	deleted:    src/Assets/wall_temp.png.meta
+#	modified:   src/ProjectSettings/EditorSettings.asset
+#	modified:   src/ProjectSettings/TagManager.asset
+#	deleted:    src/src-csharp.sln
+#	deleted:    src/src.sln
+#
+# Untracked files:
+#	4k1lpas2.r13.txt
+#
+

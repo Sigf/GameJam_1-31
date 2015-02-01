@@ -23,7 +23,7 @@ public class AstarAI : MonoBehaviour
 	//The waypoint we are currently moving towards
 	private int currentWaypoint = 0;
 
-	private Vector2 lastPosition;
+	private Vector3 lastPosition;
 	
 	public void Start ()
 	{
@@ -48,6 +48,11 @@ public class AstarAI : MonoBehaviour
 	
 	public void FixedUpdate ()
 	{
+		if(lastPosition != target.position)
+		{
+			seeker.StartPath( transform.position, target.position, OnPathComplete );
+			lastPosition = target.position;
+		}
 		if (path == null)
 		{
 			//We have no path to move after yet
