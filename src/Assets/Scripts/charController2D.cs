@@ -20,6 +20,7 @@ public class charController2D : MonoBehaviour {
 
 	public void Awake()
 	{
+
 		State = new controllerState();
 		_velocity = _normalizedForce = new Vector2(0.0f, 0.0f);
 		_transform = transform;
@@ -149,6 +150,7 @@ public class charController2D : MonoBehaviour {
 
 		}
 	}
+
 
 	public void passInput(ref inputState state)
 	{
