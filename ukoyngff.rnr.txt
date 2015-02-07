@@ -1,0 +1,49 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	src/Assembly-CSharp-Editor-vs.csproj
+	src/Assembly-CSharp-Editor.csproj
+	src/Assembly-CSharp-vs.csproj
+	src/Assembly-CSharp.csproj
+	src/Assets/Scenes/lvl1.unity
+	src/src-csharp.sln
+	src/src.sln
+	src/src.userprefs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 3 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   src/Assembly-CSharp-Editor-vs.csproj
+#	modified:   src/Assembly-CSharp-Editor.csproj
+#	modified:   src/Assembly-CSharp-vs.csproj
+#	modified:   src/Assembly-CSharp.csproj
+#	modified:   src/Assets/Prefabs/spr_floor1.prefab
+#	new file:   src/Assets/Prefabs/spr_floor3.prefab
+#	new file:   src/Assets/Prefabs/spr_floor3.prefab.meta
+#	modified:   src/Assets/Scripts/door_behavior.cs
+#	new file:   src/Assets/Scripts/editor_scripts.meta
+#	new file:   src/Assets/Scripts/editor_scripts/room_maker.cs
+#	new file:   src/Assets/Scripts/editor_scripts/room_maker.cs.meta
+#	new file:   src/Assets/Scripts/reveal_content.cs
+#	new file:   src/Assets/Scripts/reveal_content.cs.meta
+#	new file:   src/Assets/Sprites/spr_floor3.png
+#	new file:   src/Assets/Sprites/spr_floor3.png.meta
+#	modified:   src/src-csharp.sln
+#	modified:   src/src.sln
+#	modified:   src/src.userprefs
+#	new file:   tl4xf5eu.u20.txt
+#
+

@@ -33,10 +33,14 @@ public class AstarAI : MonoBehaviour
 	private BoxCollider2D _boxCollider;
 	private Vector3 _rayTopLeft, _rayBottomLeft, _rayBottomRight;
 	private bool isCollidingLeft, isCollidingRight, isCollidingAbove, isCollidingBelow;
+	private float lastPathUpdate;
+	private bool player;
 	
 	public void Start ()
 	{
 		seeker = GetComponent<Seeker>();
+		player = true;
+		lastPathUpdate = 0.0f;
 		_velocity = new Vector3(0.0f, 0.0f, 0.0f);
 		isCollidingLeft = isCollidingRight = isCollidingAbove = isCollidingBelow = false;
 		//Start a new path to the targetPosition, return the result to the OnPathComplete function
@@ -53,7 +57,7 @@ public class AstarAI : MonoBehaviour
 
 	public void OnPathComplete ( Path p )
 	{
-		Debug.Log( "Yay, we got a path back. Did it have an error? " + p.error );
+		//Debug.Log( "Yay, we got a path back. Did it have an error? " + p.error );
 		if (!p.error)
 		{
 			path = p;
@@ -72,13 +76,18 @@ public class AstarAI : MonoBehaviour
 		
 		if (currentWaypoint >= path.vectorPath.Count)
 		{
-			Debug.Log( "End Of Path Reached" );
+			if(!player){
+			//Debug.Log( "End Of Path Reached" );
 			return;
+			}
+			else{
+				seeker.StartPath( transform.position, target.position, OnPathComplete );
+			}
 		}
 		
 		//Direction to the next waypoint
 		Vector3 dir = ( path.vectorPath[ currentWaypoint ] - transform.position ).normalized;
-		Debug.Log ("First dir calc: " + dir.x + ", " + dir.y);
+		//Debug.Log ("First dir calc: " + dir.x + ", " + dir.y);
 		MoveCalculation (dir);
 		
 		//Check if we are close enough to the next waypoint
@@ -86,9 +95,12 @@ public class AstarAI : MonoBehaviour
 		if(lastPosition != target.position)
 		{
 			if(Mathf.Abs (Vector3.Magnitude(target.position - lastPosition)) >= 0.4f){
+				if(Time.time - lastPathUpdate >= 0.3f){
 				seeker.StartPath( transform.position, target.position, OnPathComplete );
-
 				lastPosition = target.position;
+				lastPathUpdate = Time.time;
+				}
+
 			}
 		}
 		if (Vector3.Distance( transform.position, path.vectorPath[ currentWaypoint ] ) < nextWaypointDistance)
@@ -122,12 +134,12 @@ public class AstarAI : MonoBehaviour
 		calculateRayOrigins ();
 		float originalX = deltaMovement.x;
 		float originalY = deltaMovement.y;
-		Debug.Log ("Y: at entry " + deltaMovement.y);
+		//Debug.Log ("Y: at entry " + deltaMovement.y);
 		if(Mathf.Abs(deltaMovement.x) > 0.001f){
 			moveHorizontally(ref deltaMovement);
 		}
 		if(Mathf.Abs (deltaMovement.y) > 0.001f){
-			Debug.Log (deltaMovement.y);
+			//Debug.Log (deltaMovement.y);
 			moveVertically (ref deltaMovement);
 		}
 		if(isCollidingRight && originalX > 0.0f)
@@ -147,7 +159,7 @@ public class AstarAI : MonoBehaviour
 		}
 
 		transform.Translate (deltaMovement);
-		Debug.Log (deltaMovement.x + ", " + deltaMovement.y);
+		//Debug.Log (deltaMovement.x + ", " + deltaMovement.y);
 		
 		if(Time.fixedDeltaTime > 0.0f)
 		{
