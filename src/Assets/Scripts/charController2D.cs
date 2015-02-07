@@ -158,6 +158,11 @@ public class charController2D : MonoBehaviour {
 		processInput ();
 	}
 
+	public void handleSlope()
+	{
+		
+	}
+
 	public void processInput()
 	{
 		_normalizedForce = new Vector2(0.0f, 0.0f);
