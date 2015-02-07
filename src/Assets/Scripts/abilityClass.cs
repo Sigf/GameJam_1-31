@@ -1,15 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class abilityClass : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+public class abilityClass {
+	public enum dmgType{
+		Physical,
+		Poison,
+		Frost,
+		Fire,
+		Water,
+		Electric,
+		Void,
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public enum atkType{
+		melee,
+		ranged,
+		aura
 	}
+	public enum healingType{
+		noHealing,
+		healsPlayer,
+		healsMinions,
+		healsAll
+	}
+
+	public int dmgAmount;
+	public int abilityLevel;
+	public int abilityXP;
+
+	public float atkCooldown;
+	public bool onCooldown;
+
+	public Animation atkAnimation;
+
 }
