@@ -5,12 +5,14 @@ public class door_behavior : MonoBehaviour {
 
 	public Sprite open_spr;
 	public Sprite close_spr;
-	public GameObject player;
+	public GameObject next_room;
 	private SpriteRenderer _renderer;
+	private bool revealed;
 
 	// Use this for initialization
 	void Start () {
 		_renderer = gameObject.GetComponent<SpriteRenderer>();
+		revealed = false;
 	}
 	
 	// Update is called once per frame
@@ -20,6 +22,10 @@ public class door_behavior : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Player"){
 		_renderer.sprite = open_spr;
+			if(!revealed) {
+				next_room.SendMessage("reveal");
+				revealed = true;
+			}
 		}
 	}
 

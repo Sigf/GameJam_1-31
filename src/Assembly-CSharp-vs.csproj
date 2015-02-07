@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -122,11 +122,13 @@
      <Compile Include="Assets\Scripts\charControllerParameters.cs" />
      <Compile Include="Assets\Scripts\controllerState.cs" />
      <Compile Include="Assets\Scripts\door_behavior.cs" />
+     <Compile Include="Assets\Scripts\editor_scripts\room_maker.cs" />
      <Compile Include="Assets\Scripts\follow_mouse.cs" />
      <Compile Include="Assets\Scripts\follow_player.cs" />
      <Compile Include="Assets\Scripts\inputState.cs" />
      <Compile Include="Assets\Scripts\player.cs" />
      <Compile Include="Assets\Scripts\player_attack.cs" />
+     <Compile Include="Assets\Scripts\reveal_content.cs" />
      <Compile Include="Assets\Trash\charController.cs" />
      <Compile Include="Assets\Trash\charParameters.cs" />
      <Compile Include="Assets\Trash\inputStatetrash.cs" />
@@ -143,10 +145,17 @@
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\AstarPathfindingProject\link.xml" />
  <Reference Include="UnityEngine.UI">
+<<<<<<< HEAD
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+=======
+ <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+>>>>>>> origin/master
  </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/Kvlt Kitty/Documents/GameJams/GameJam_1-31/src/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>C:/Users/Sebastien/Desktop/repos/GameJam_1-31/src/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.JsonFx">
+ <HintPath>C:/Users/Sebastien/Desktop/repos/GameJam_1-31/src/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
  <HintPath>C:/Users/Kvlt Kitty/Documents/GameJams/GameJam_1-31/src/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
