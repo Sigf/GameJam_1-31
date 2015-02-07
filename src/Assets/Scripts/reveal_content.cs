@@ -3,13 +3,17 @@ using System.Collections;
 
 public class reveal_content : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	void Start(){
+		Renderer[] renderers = GetComponentsInChildren<Renderer> ();
+		foreach (Renderer r in renderers) {
+			r.enabled = false;		
+			}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void reveal() {
+		Renderer[] renderers = GetComponentsInChildren<Renderer> ();
+		foreach (Renderer r in renderers) {
+			r.enabled = true;		
+		}
 	}
 }
