@@ -2,15 +2,15 @@
 using System.Collections;
 
 
-public class abilityClass {
+public class Ability {
 	public enum dmgType{
-		Physical,
-		Poison,
-		Frost,
-		Fire,
-		Water,
-		Electric,
-		Void,
+		physical,
+		poison,
+		frost,
+		fire,
+		water,
+		electric,
+		darkmatter
 	}
 	public enum atkType{
 		melee,
@@ -24,13 +24,23 @@ public class abilityClass {
 		healsAll
 	}
 
+
 	public int dmgAmount;
 	public int abilityLevel;
 	public int abilityXP;
+	public float abilityWidth;
+	public float abilityHeight;
+
+	public float abilityInitialSpeed;
+	public float abilityAcceleration;
+	public float abilityMaxSpeed;
 
 	public float atkCooldown;
 	public bool onCooldown;
 
 	public Animation atkAnimation;
+	public AudioClip atkSound;
+
+
 
 }
