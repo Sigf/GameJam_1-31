@@ -160,8 +160,7 @@ public class charController2D : MonoBehaviour {
 
 	public void handleSlope()
 	{
-
-
+		
 	}
 
 	public void processInput()

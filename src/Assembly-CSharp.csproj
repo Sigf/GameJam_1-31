@@ -118,6 +118,7 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
      <Compile Include="Assets\Scripts\AstarAI.cs" />
+     <Compile Include="Assets\Scripts\abilityClass.cs" />
      <Compile Include="Assets\Scripts\charController2D.cs" />
      <Compile Include="Assets\Scripts\charControllerParameters.cs" />
      <Compile Include="Assets\Scripts\controllerState.cs" />
@@ -126,6 +127,7 @@
      <Compile Include="Assets\Scripts\follow_player.cs" />
      <Compile Include="Assets\Scripts\inputState.cs" />
      <Compile Include="Assets\Scripts\player.cs" />
+     <Compile Include="Assets\Scripts\playerStats.cs" />
      <Compile Include="Assets\Scripts\player_attack.cs" />
      <Compile Include="Assets\Scripts\reveal_content.cs" />
      <Compile Include="Assets\Trash\charController.cs" />
