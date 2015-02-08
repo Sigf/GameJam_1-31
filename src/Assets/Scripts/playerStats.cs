@@ -32,4 +32,5 @@ public class playerStats : Ability{
 		Debug.Log ("Current Ability is: " + curAbility.id);
 	}
 
+
 }

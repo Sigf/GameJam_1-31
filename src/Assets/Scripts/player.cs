@@ -60,6 +60,12 @@ public class player : MonoBehaviour {
 		else if(Input.GetKeyDown (KeyCode.Alpha5)){
 			_state.fivePressed = true;
 		}
+		if(Input.GetKeyDown (KeyCode.Mouse0)){
+			_state.atkPressed = true;
+		}
+		else if(Input.GetKeyUp (KeyCode.Mouse0)){
+			_state.atkPressed = false;
+		}
 		
 	}
 	

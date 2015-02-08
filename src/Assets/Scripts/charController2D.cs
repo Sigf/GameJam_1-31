@@ -206,10 +206,13 @@ public class charController2D : MonoBehaviour {
 		if(_curState.fivePressed){
 			_stats.curAbility = _stats.atk5;
 		}
-		_stats.printCurAbility();
 		_curState.ResetAtkPress();
 		MoveCalculation ();
 		
+	}
+
+	void OnGUI(){
+		GUI.Box(new Rect(100,100,180, 80), "Current Ability: " + _stats.curAbility.id.ToString ());
 	}
 
 
