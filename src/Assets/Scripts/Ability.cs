@@ -32,7 +32,7 @@ public class Ability {
 	public enum eventType{
 		buttonPress
 	}
-	public int id;
+	public int id = 0;
 	public atkType attackType;
 	public healingType healType;
 	public dmgType damageType;

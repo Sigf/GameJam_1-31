@@ -12,7 +12,7 @@ public class playerStats : Ability{
 	public Ability curAbility{get; set;}
 
 	// Use this for initialization
-	void start () {
+	void Awake () {
 
 		hp = 100;
 		atk1.resetCooldown();
