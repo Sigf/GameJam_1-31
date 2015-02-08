@@ -49,7 +49,6 @@ public class player : MonoBehaviour {
 		}
 		else if(Input.GetKeyDown (KeyCode.Alpha2)){
 			_state.twoPressed = true;
-			Debug.Log ("TRUE!");
 		}
 		else if(Input.GetKeyDown (KeyCode.Alpha3)){
 			_state.threePressed = true;
