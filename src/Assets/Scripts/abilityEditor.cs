@@ -15,34 +15,71 @@ public class abilityEditor : Editor {
 
 			settings.damageType = (Ability.dmgType)EditorGUILayout.EnumPopup("Damage Type", settings.damageType);
 
-			settings.dmgAmount = EditorGUILayout.IntField("Damage", settings.dmgAmount);
-
 			settings.abilityLevel = EditorGUILayout.IntField("Level", settings.abilityLevel);
 
 			settings.abilityInitialSpeed = EditorGUILayout.FloatField("Initial Speed", settings.abilityInitialSpeed);
-
+			
 			settings.abilityMaxSpeed = EditorGUILayout.FloatField("Max Speed", settings.abilityMaxSpeed);
-
+			
 			settings.abilityAcceleration = EditorGUILayout.FloatField("Ability Acceleration", settings.abilityAcceleration);
 
 			settings.travelUntil = (Ability.trajectoryType)EditorGUILayout.EnumPopup ("Travel Type", settings.travelUntil);
 
-			if(settings.travelUntil == Ability.trajectoryType.travelUntilHit){
+			if(settings.travelUntil == Ability.trajectoryType.travelUntilEvent){
 
+				settings.typeEvent = (Ability.TypeEvent) EditorGUILayout.EnumPopup ("Event Type", settings.typeEvent);
+
+				if(settings.typeEvent == Ability.TypeEvent.time){
+
+					settings.projectileTimeLimit = EditorGUILayout.FloatField("Time", settings.projectileTimeLimit);
+		
+					settings.ricochet = true;
+
+				}
+
+			}
+
+			if(settings.travelUntil == Ability.trajectoryType.travelUntilHit){
+				
 				settings.projectileLimit = EditorGUILayout.IntField ("Projectile Limit", settings.projectileLimit);
 
-			}
+				settings.ricochet = EditorGUILayout.Toggle("Ricochet?", settings.ricochet);
 
+				if(settings.ricochet){
+
+					settings.ricochetType = Ability.RicochetType.goUntilNumHits;
+
+					settings.projectileHitLimit = EditorGUILayout.IntField("Num Hits", settings.projectileHitLimit);
+
+				}
+				
+			}
+			
 			else if(settings.travelUntil == Ability.trajectoryType.travelUntilRange){
-
+				
 				settings.maxRange = EditorGUILayout.FloatField("Range", settings.maxRange);
-
+				settings.ricochet = EditorGUILayout.Toggle("Ricochet?", settings.ricochet);
+				
+				if(settings.ricochet){
+					
+					settings.ricochetType = Ability.RicochetType.goUntilRange;
+					
+				}
+				
 			}
-			else if(settings.travelUntil == Ability.trajectoryType.travelUntilEvent){
 
-				settings.typeEvent = (Ability.TypeEvent)EditorGUILayout.EnumPopup ("Event Type", settings.typeEvent);
+			settings.overTime = EditorGUILayout.BeginToggleGroup("Damage Over Time", settings.overTime);
 
-			}
+			settings.dmgAmount = EditorGUILayout.IntField("   -Damage", settings.dmgAmount);
+
+			settings.duration = EditorGUILayout.FloatField ("   -Duration", settings.duration);
+
+			settings.duration = EditorGUILayout.FloatField ("   -Increment", settings.increment);
+
+			settings.percentChanceDOT = EditorGUILayout.IntField("   -% Chance", settings.percentChanceDOT);
+
+			EditorGUILayout.EndToggleGroup();
+
 
 		}
 

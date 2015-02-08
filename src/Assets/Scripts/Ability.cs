@@ -43,7 +43,14 @@ public class Ability : MonoBehaviour{
 	}
 
 	public enum TypeEvent{
-		buttonPress
+		buttonPress,
+		time
+	}
+
+	public enum RicochetType{
+		goUntilTime,
+		goUntilNumHits,
+		goUntilRange
 	}
 
 	public int id;
@@ -54,6 +61,10 @@ public class Ability : MonoBehaviour{
 	public int abilityLevel;
 	public int healAmount;
 	public int abilityXP = 0;
+	public bool overTime;
+	public float duration;
+	public float increment;
+	public int percentChanceDOT;
 
 	//melee information
 	public float abilityWidth;
@@ -69,6 +80,10 @@ public class Ability : MonoBehaviour{
 	public GameObject attackSprite;
 	public trajectoryType travelUntil;
 	public TypeEvent typeEvent;
+	public bool ricochet;
+	public RicochetType ricochetType;
+	public float projectileTimeLimit;
+	public int projectileHitLimit;
 
 
 
