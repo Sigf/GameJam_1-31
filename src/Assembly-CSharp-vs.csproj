@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -117,8 +117,8 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
+     <Compile Include="Assets\Scripts\Ability.cs" />
      <Compile Include="Assets\Scripts\AstarAI.cs" />
-     <Compile Include="Assets\Scripts\abilityClass.cs" />
      <Compile Include="Assets\Scripts\abilityFunctions.cs" />
      <Compile Include="Assets\Scripts\charController2D.cs" />
      <Compile Include="Assets\Scripts\charControllerParameters.cs" />
@@ -130,6 +130,7 @@
      <Compile Include="Assets\Scripts\player.cs" />
      <Compile Include="Assets\Scripts\playerStats.cs" />
      <Compile Include="Assets\Scripts\player_attack.cs" />
+     <Compile Include="Assets\Scripts\rangedAttack.cs" />
      <Compile Include="Assets\Scripts\reveal_content.cs" />
      <Compile Include="Assets\Trash\charController.cs" />
      <Compile Include="Assets\Trash\charParameters.cs" />
@@ -147,13 +148,13 @@
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\AstarPathfindingProject\link.xml" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/Sebastien/Desktop/repos/GameJam_1-31/src/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>C:/Users/Kvlt Kitty/Documents/GameJams/GameJam_1-31/src/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>C:/Users/Sebastien/Desktop/repos/GameJam_1-31/src/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>C:/Users/Kvlt Kitty/Documents/GameJams/GameJam_1-31/src/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

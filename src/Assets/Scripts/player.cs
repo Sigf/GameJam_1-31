@@ -44,6 +44,21 @@ public class player : MonoBehaviour {
 		{
 			_state.aPressed = false;
 		}
+		if(Input.GetKeyDown (KeyCode.Alpha1)){
+			_state.onePressed = true;
+		}
+		else if(Input.GetKeyDown (KeyCode.Alpha2)){
+			_state.twoPressed = true;
+		}
+		else if(Input.GetKeyDown (KeyCode.Alpha3)){
+			_state.threePressed = true;
+		}
+		else if(Input.GetKeyDown (KeyCode.Alpha4)){
+			_state.fourPressed = true;
+		}
+		else if(Input.GetKeyDown (KeyCode.Alpha5)){
+			_state.fivePressed = true;
+		}
 		
 	}
 	
