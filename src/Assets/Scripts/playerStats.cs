@@ -4,15 +4,15 @@ using System.Collections;
 public class playerStats : Ability{
 	public int hp;
 
-	public Ability atk1{get; set;}
-	public Ability atk2{get; set;}
-	public Ability atk3{get; set;}
-	public Ability atk4{get; set;}
-	public Ability atk5{get; set;}
-	public Ability curAbility{get; set;}
+	public Ability atk1 = new Ability();
+	public Ability atk2 = new Ability();
+	public Ability atk3 = new Ability();
+	public Ability atk4 = new Ability();
+	public Ability atk5 = new Ability();
+	public Ability curAbility = new Ability();
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 
 		hp = 100;
 		atk1.resetCooldown();
@@ -29,21 +29,7 @@ public class playerStats : Ability{
 	
 	}
 	public void printCurAbility(){
-		if(curAbility.id == atk1.id){
-			Debug.Log ("Current Ability: Atk 1");
-		}
-		if(curAbility.id == atk2.id){
-			Debug.Log ("Current Ability: Atk 2");
-		}
-		if(curAbility.id == atk3.id){
-			Debug.Log ("Current Ability: Atk 3");
-		}
-		if(curAbility.id == atk4.id){
-			Debug.Log ("Current Ability: Atk 4");
-		}
-		if(curAbility.id == atk5.id){
-			Debug.Log ("Current Ability: Atk 5");
-		}
+		Debug.Log ("Current Ability is: " + curAbility.id);
 	}
 
 }

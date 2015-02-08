@@ -8,7 +8,7 @@ public class charController2D : MonoBehaviour {
 
 	public charControllerParameters parameters;
 	public controllerState State{get; private set;}
-	public playerStats _stats{get; private set;}
+	public playerStats _stats;
 	public LayerMask wallMask;
 	private Vector2 _normalizedForce;
 	private Vector2 _velocity;
@@ -25,6 +25,12 @@ public class charController2D : MonoBehaviour {
 
 		State = new controllerState();
 		_stats = new playerStats();
+		_stats.atk1.id = 1;
+		_stats.atk2.id = 2;
+		_stats.atk3.id = 3;
+		_stats.atk4.id = 4;
+		_stats.atk5.id = 5;
+		_stats.curAbility.id = 1;
 		_velocity = _normalizedForce = new Vector2(0.0f, 0.0f);
 		_transform = transform;
 		_boxCollider = GetComponent<BoxCollider2D>();
