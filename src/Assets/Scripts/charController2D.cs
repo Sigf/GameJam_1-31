@@ -18,6 +18,7 @@ public class charController2D : MonoBehaviour {
 	private Vector2 _rayTopLeft;
 	private Vector2 _rayBottomLeft;
 	private Vector2 _rayBottomRight;
+	private abilityFunctions _abilityFunctions;
 
 
 	public void Awake()
@@ -25,12 +26,8 @@ public class charController2D : MonoBehaviour {
 
 		State = new controllerState();
 		_stats = new playerStats();
-		_stats.atk1.id = 1;
-		_stats.atk2.id = 2;
-		_stats.atk3.id = 3;
-		_stats.atk4.id = 4;
-		_stats.atk5.id = 5;
-		_stats.curAbility.id = 1;
+		_abilityFunctions = new abilityFunctions();
+		_stats.loadAbilities();
 		_velocity = _normalizedForce = new Vector2(0.0f, 0.0f);
 		_transform = transform;
 		_boxCollider = GetComponent<BoxCollider2D>();
@@ -206,6 +203,9 @@ public class charController2D : MonoBehaviour {
 		if(_curState.fivePressed){
 			_stats.curAbility = _stats.atk5;
 		}
+		if(_curState.atkPressed){
+			_abilityFunctions.castAbility (_stats.curAbility);
+		}
 		_curState.ResetAtkPress();
 		MoveCalculation ();
 		
@@ -213,6 +213,11 @@ public class charController2D : MonoBehaviour {
 
 	void OnGUI(){
 		GUI.Box(new Rect(100,100,180, 80), "Current Ability: " + _stats.curAbility.id.ToString ());
+	}
+
+	public void sendToSetAbility(Ability ability){
+		_stats.setAbility (_stats.curAbility.id, ability);
+		
 	}
 
 
