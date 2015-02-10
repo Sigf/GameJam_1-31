@@ -28,6 +28,15 @@ public class inputState {
 
 	}
 
+	public void ResetAtkPress(){
+		onePressed =
+			twoPressed =
+				threePressed =
+				fourPressed =
+				fivePressed =
+				false;
+	}
+
 	public void printState()
 	{
 		Debug.Log ("W: " + wPressed + "A: " + aPressed + "S: " + sPressed + "D: " + dPressed + "1: " + onePressed + "2: " + twoPressed + "3: " + threePressed + "4: " + fourPressed + "5: " + fivePressed + "Atk: " + atkPressed);

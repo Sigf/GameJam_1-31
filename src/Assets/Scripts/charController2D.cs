@@ -8,6 +8,7 @@ public class charController2D : MonoBehaviour {
 
 	public charControllerParameters parameters;
 	public controllerState State{get; private set;}
+	public playerStats _stats;
 	public LayerMask wallMask;
 	private Vector2 _normalizedForce;
 	private Vector2 _velocity;
@@ -17,11 +18,16 @@ public class charController2D : MonoBehaviour {
 	private Vector2 _rayTopLeft;
 	private Vector2 _rayBottomLeft;
 	private Vector2 _rayBottomRight;
+	private abilityFunctions _abilityFunctions;
+
 
 	public void Awake()
 	{
 
 		State = new controllerState();
+		_stats = new playerStats();
+		_abilityFunctions = new abilityFunctions();
+		_stats.loadAbilities();
 		_velocity = _normalizedForce = new Vector2(0.0f, 0.0f);
 		_transform = transform;
 		_boxCollider = GetComponent<BoxCollider2D>();
@@ -182,7 +188,35 @@ public class charController2D : MonoBehaviour {
 		{
 			_normalizedForce.y -= 1.0f;
 		}
+		if(_curState.onePressed){
+			_stats.curAbility = _stats.atk1;
+		}
+		if(_curState.twoPressed){
+			_stats.curAbility = _stats.atk2;
+		}
+		if(_curState.threePressed){
+			_stats.curAbility = _stats.atk3;
+		}
+		if(_curState.fourPressed){
+			_stats.curAbility = _stats.atk4;
+		}
+		if(_curState.fivePressed){
+			_stats.curAbility = _stats.atk5;
+		}
+		if(_curState.atkPressed){
+			_abilityFunctions.castAbility (_stats.curAbility);
+		}
+		_curState.ResetAtkPress();
 		MoveCalculation ();
+		
+	}
+
+	void OnGUI(){
+		GUI.Box(new Rect(100,100,180, 80), "Current Ability: " + _stats.curAbility.id.ToString ());
+	}
+
+	public void sendToSetAbility(Ability ability){
+		_stats.setAbility (_stats.curAbility.id, ability);
 		
 	}
 
