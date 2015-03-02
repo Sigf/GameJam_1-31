@@ -1,20 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerStats : Ability{
+[System.Serializable]
+public class playerStats {
 	public int hp;
 
-	public Ability atk1 = new Ability();
-	public Ability atk2 = new Ability();
-	public Ability atk3 = new Ability();
-	public Ability atk4 = new Ability();
-	public Ability atk5 = new Ability();
-	public Ability curAbility = new Ability();
+	public Ability atk1;
+	public Ability atk2;
+	public Ability atk3;
+	public Ability atk4;
+	public Ability atk5;
+	[HideInInspector]
+	public Ability curAbility;
 
 
 	public void loadAbilities(){
 		atk1.id = 1;
-		atk1.attackType = atkType.melee;
 		atk2.id = 2;
 		atk3.id = 3;
 		atk4.id = 4;

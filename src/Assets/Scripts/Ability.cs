@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class Ability : MonoBehaviour{
+[System.Serializable]
+public class Ability {
 	public enum dmgType{
 		physical,
 		poison,

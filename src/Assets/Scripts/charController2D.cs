@@ -25,7 +25,7 @@ public class charController2D : MonoBehaviour {
 	{
 
 		State = new controllerState();
-		_stats = new playerStats();
+
 		_abilityFunctions = new abilityFunctions();
 		_stats.loadAbilities();
 		_velocity = _normalizedForce = new Vector2(0.0f, 0.0f);

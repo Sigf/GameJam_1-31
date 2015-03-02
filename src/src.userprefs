@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\2dTutorial\Assets\Scripts\charController2d.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\player.cs">
     <Files>
-      <File FileName="..\..\..\2dTutorial\Assets\Scripts\controllerParameters2d.cs" Line="1" Column="1" />
-      <File FileName="..\..\..\2dTutorial\Assets\Scripts\charController2d.cs" Line="149" Column="95" />
-      <File FileName="..\..\..\2dTutorial\Assets\Scripts\pathDefinition.cs" Line="57" Column="82" />
+      <File FileName="Assets\Scripts\player.cs" Line="5" Column="27" />
+      <File FileName="..\..\OpenRangeClone\OpenRangeProject\Assets\ControllerScripts\Player\player.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
