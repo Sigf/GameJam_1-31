@@ -23,8 +23,12 @@ public class charController2D : MonoBehaviour {
 
 	public void Awake()
 	{
-
 		State = new controllerState();
+		_stats.atk1.id = 1;
+		_stats.atk2.id = 2;
+		_stats.atk3.id = 3;
+		_stats.atk4.id = 4;
+		_stats.atk5.id = 5;
 
 		_abilityFunctions = new abilityFunctions();
 		_stats.loadAbilities();
