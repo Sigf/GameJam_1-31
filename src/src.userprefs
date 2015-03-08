@@ -1,9 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\player.cs">
     <Files>
-      <File FileName="Assets\Scripts\player.cs" Line="5" Column="27" />
-      <File FileName="..\..\OpenRangeClone\OpenRangeProject\Assets\ControllerScripts\Player\player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\abilityEditor.cs" Line="20" Column="3" />
+      <File FileName="Assets\Scripts\player.cs" Line="4" Column="38" />
+      <File FileName="Assets\Scripts\playerStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ability.cs" Line="80" Column="20" />
+      <File FileName="Assets\Scripts\charController2D.cs" Line="2" Column="211" />
+      <File FileName="Assets\Plugins\FMOD\FMOD_StudioSystem.cs" Line="37" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
