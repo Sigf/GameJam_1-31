@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
+[System.Serializable] //made it serializable so that way we can use it in editor extensions and such
 public class Ability {
 	public enum Element{
 		Frost,
