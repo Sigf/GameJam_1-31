@@ -12,21 +12,16 @@ public class playerStats {
 	public Ability atk5;
 
 	[HideInInspector]
-	public Ability curAbility;
+	public int curAbility;
 
 
 	public void loadAbilities(){
-		atk1.id = 1;
-		atk2.id = 2;
-		atk3.id = 3;
-		atk4.id = 4;
-		atk5.id = 5;
-		curAbility.id = 1;
+		curAbility = 1;
 
 	}
 
 	public void printCurAbility(){
-		Debug.Log ("Current Ability is: " + curAbility.id);
+		Debug.Log ("Current Ability is: " + curAbility);
 	}
 
 	public void setAbility(int id, Ability ability){

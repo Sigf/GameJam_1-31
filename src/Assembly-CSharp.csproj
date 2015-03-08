@@ -118,9 +118,11 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
      <Compile Include="Assets\Scripts\AI\AstarAI.cs" />
+     <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityAOE.cs" />
+     <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityProjectile.cs" />
+     <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityRay.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability.cs" />
      <Compile Include="Assets\Scripts\Ability\abilityEditor.cs" />
-     <Compile Include="Assets\Scripts\Ability\abilityFunctions.cs" />
      <Compile Include="Assets\Scripts\Ability\abilityPickup.cs" />
      <Compile Include="Assets\Scripts\Animation\player_attack.cs" />
      <Compile Include="Assets\Scripts\Camera\follow_player.cs" />

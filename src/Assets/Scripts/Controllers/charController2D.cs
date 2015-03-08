@@ -21,21 +21,14 @@ public class charController2D : MonoBehaviour {
 	private Vector2 _rayTopLeft;
 	private Vector2 _rayBottomLeft;
 	private Vector2 _rayBottomRight;
-	private abilityFunctions _abilityFunctions;
 
 
 	public void Awake()
 	{
 		State = new controllerState();
+	
 
-		_stats.atk1.id = 1;
-		_stats.atk2.id = 2;
-		_stats.atk3.id = 3;
-		_stats.atk4.id = 4;
-		_stats.atk5.id = 5;
-
-		_stats.curAbility = _stats.atk1;
-		_abilityFunctions = new abilityFunctions();
+		_stats.curAbility = 1;
 		_stats.loadAbilities();
 		_velocity = _normalizedForce = new Vector2(0.0f, 0.0f);
 		_transform = transform;
@@ -228,32 +221,32 @@ public class charController2D : MonoBehaviour {
 
 		if(_curState.onePressed)
 		{
-			_stats.curAbility = _stats.atk1;
+			_stats.curAbility = 1;
 		}
 
 		if(_curState.twoPressed)
 		{
-			_stats.curAbility = _stats.atk2;
+			_stats.curAbility = 2;
 		}
 
 		if(_curState.threePressed)
 		{
-			_stats.curAbility = _stats.atk3;
+			_stats.curAbility = 3;
 		}
 
 		if(_curState.fourPressed)
 		{
-			_stats.curAbility = _stats.atk4;
+			_stats.curAbility = 4;
 		}
 
 		if(_curState.fivePressed)
 		{
-			_stats.curAbility = _stats.atk5;
+			_stats.curAbility = 5;
 		}
 
 		if(_curState.atkPressed)
 		{
-			_abilityFunctions.castAbility (_stats.curAbility);
+
 		}
 
 		_curState.ResetAtkPress();
@@ -264,12 +257,12 @@ public class charController2D : MonoBehaviour {
 	void OnGUI()
 	{
 
-		GUI.Box(new Rect(100,100,180, 80), "Current Ability: " + _stats.curAbility.id.ToString ());
+		GUI.Box(new Rect(100,100,180, 80), "Current Ability: " + _stats.curAbility);
 	
 	}
 
 	public void sendToSetAbility(Ability ability){
-		_stats.setAbility (_stats.curAbility.id, ability);
+		_stats.setAbility (_stats.curAbility, ability);
 		
 	}
 
