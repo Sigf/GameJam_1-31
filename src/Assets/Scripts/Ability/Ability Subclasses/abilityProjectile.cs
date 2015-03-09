@@ -39,7 +39,9 @@ public class abilityProjectile : Ability {
 				 * unless we want to have more interesting shapes.  I think perhaps allowing the player to choose the angles
 				 * before a challenge could add another level of depth to the strategy
 				 * May be a bit more difficult to implement, but not by much.  Could essentially just have an array of bools for each possible castposition from say, 1-8, that each cast would iterate through
-				 * or maybe just labeling the positions 1-8, and then having an array of castPoint would be good, so it essentially just iterates through each and passes them the info they need */
+				 * or maybe just labeling the positions 1-8, and then having an array of castPoint would be good, so it essentially just iterates through each and passes them the info they need 
+				 * We could even incorporate both, perhaps have a dropdown option that lets them choose if the projectiles are unidirectional or not
+				 */
 			}
 		}
 	}
