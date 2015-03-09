@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class abilityProjectile : Ability {
+	GameObject _projectile;
 	int _numProjectiles;
 	int _numProjectilesLevel;
 
@@ -15,9 +16,18 @@ public class abilityProjectile : Ability {
 
 	bool _lingering;
 
-	public override void Cast()
+	public void Start()
 	{
 
+	}
+
+	public override void Cast(Vector3 castPoint)
+	{
+		if(!onCD)
+		{
+			GameObject newInstace = MonoBehaviour.Instantiate (_projectile, castPoint, Quaternion.identity) as GameObject;
+			onCD = true;
+		}
 	}
 
 	public override void Upgrade()

@@ -12,18 +12,22 @@ public class Ability {
 		Dark
 	}
 
-	Element element;
-	int xp;
-	int curLevel;
-	int[] nextLevelXp;
-	int dmg;
-	int dmg_lvl = 0;
-	float cdTimer;
-	bool finalUpgrade;
+	public Element element;
+	public int xp;
+	public int curLevel;
+	public int[] nextLevelXp;
+	public int dmg;
+	public int dmg_lvl = 0;
+	public float cdTimer;
+	public bool onCD;
+	public bool finalUpgrade;
 
-	public virtual void Cast()
+	public virtual void Cast(Vector3 castPoint)
 	{
+		if(!onCD)
+		{
 
+		}
 	}
 
 	public virtual void Upgrade()

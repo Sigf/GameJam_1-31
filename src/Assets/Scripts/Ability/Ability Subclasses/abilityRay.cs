@@ -13,9 +13,12 @@ public class abilityRay : Ability {
 	bool _piercing;
 	float _percentReduction;
 
-	public override void Cast()
+	public override void Cast(Vector3 castPoint)
 	{
-		
+		if(!onCD)
+		{
+
+		}
 	}
 
 	public override void Upgrade()
