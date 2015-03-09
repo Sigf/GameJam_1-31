@@ -25,8 +25,15 @@ public class abilityProjectile : Ability {
 	{
 		if(!onCD)
 		{
-			GameObject newInstace = MonoBehaviour.Instantiate (_projectile, castPoint, Quaternion.identity) as GameObject;
-			onCD = true;
+			if(_numProjectiles == 1){
+				GameObject newInstace = MonoBehaviour.Instantiate (_projectile, castPoint, Quaternion.identity) as GameObject;
+				cdEndTime = Time.time + cdTimer;
+				onCD = true;
+			}
+			else
+			{
+				//TODO: Need to get the boxcollider width and evenly distribute the projectiles in front of the players
+			}
 		}
 	}
 

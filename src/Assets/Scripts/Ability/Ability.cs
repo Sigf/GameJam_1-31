@@ -20,6 +20,8 @@ public class Ability {
 	public int dmg_lvl = 0;
 	public float cdTimer;
 	public bool onCD;
+	public float cdEndTime;
+
 	public bool finalUpgrade;
 
 	public virtual void Cast(Vector3 castPoint)
