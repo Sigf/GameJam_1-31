@@ -24,9 +24,8 @@ public class Ability {
 	// Static int array of required xp to invest for each levels.
 	protected int[] nextLevelXp = new int[5]{10, 20, 40, 80, 160};
 
-	protected int dmg;
-	protected int dmg_lvl = 0;
-	protected int[] dmg_array = new int[]{5,10,15,20,25};
+	protected float damage;
+	protected int damageLevel = 0;
 
 	protected float cdTimer;
 	protected bool onCD;
@@ -36,12 +35,14 @@ public class Ability {
 
 	public Ability(Element new_element)
 	{
-		element = new_element;
+		this.element = new_element;
+		this.damageLevel = 0;
+		this.onCD = false;
+		this.finalUpgrade = false;
+
 		Debug.Log ("New Ability created.");
 		Debug.Log ("Element is:");
 		Debug.Log (element);
-		onCD = false;
-		finalUpgrade = false;
 	}
 
 	public virtual void Cast(Vector3 castPoint)

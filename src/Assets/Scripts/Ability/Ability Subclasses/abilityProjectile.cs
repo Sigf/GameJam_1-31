@@ -1,24 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* 
+ * PROJECTILE STATS TABLE (arbritary for now, is going to change with playtesting)
+ * damage: 2.0, 5.0, 8.0, 15.0, 30.0
+ * projectiles: 1, 2, 3, 4, 5
+ * range: 5.0, 10.0, 15.0, 20.0, 25.0
+ * speed: 1.0, 1.5, 2.0, 2.5, 3.0
+ * 
+ */
+
 public class abilityProjectile : Ability {
-	GameObject _projectile;
-	int _numProjectiles;
-	int _numProjectilesLevel;
+	GameObject projectile;
 
-	float _speed;
-	int _speedLevel;
+	float[] damage_array = new float[5]{2.0f, 5.0f, 8.0f, 15.0f, 30.0f};
+	float[] speed_array = new float[5]{1.0f, 1.5f, 2.0f, 2.5f, 3.0f};
+	float[] range_array = new float[5]{5.0f, 10.0f, 15.0f, 20.0f, 25.0f};
+	int[] projectiles_array = new int[5]{1, 2, 3, 4, 5};
 
-	float _range;
-	int _rangeLevel;
+	float range;
+	int rangeLevel;
 
-	bool _explosive;
+	float speed;
+	int speedLevel;
 
-	bool _lingering;
+	int projectiles;
+	int projectilesLevel;
+
+	bool explosive;
+	bool lingering;
 
 	public abilityProjectile(Element new_element) : base(new_element)
 	{
 		Debug.Log("Projectile Ability instanciated!");
+
+		this.rangeLevel = 0;
+		this.speedLevel = 0;
+		this.projectilesLevel = 0;
+
+		this.damage = damage_array [damageLevel];
+		this.range = range_array [rangeLevel];
+		this.speed = speed_array [speedLevel];
+		this.projectiles = projectiles_array [projectilesLevel];
 	}
 
 	public void Start()
@@ -30,8 +53,8 @@ public class abilityProjectile : Ability {
 	{
 		if(!onCD)
 		{
-			if(_numProjectiles == 1){
-				GameObject newInstace = MonoBehaviour.Instantiate (_projectile, castPoint, Quaternion.identity) as GameObject;
+			if(projectiles == 1){
+				GameObject newInstace = MonoBehaviour.Instantiate (projectile, castPoint, Quaternion.identity) as GameObject;
 				//TODO: Send message of type abilityProjectile to a setter function within the projectile
 
 
