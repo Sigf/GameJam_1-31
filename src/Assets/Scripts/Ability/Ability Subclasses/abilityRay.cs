@@ -13,6 +13,11 @@ public class abilityRay : Ability {
 	bool _piercing;
 	float _percentReduction;
 
+	public abilityRay(Element new_element) : base(new_element)
+	{
+
+	}
+
 	public override void Cast(Vector3 castPoint)
 	{
 		if(!onCD)

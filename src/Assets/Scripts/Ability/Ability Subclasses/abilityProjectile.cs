@@ -16,6 +16,11 @@ public class abilityProjectile : Ability {
 
 	bool _lingering;
 
+	public abilityProjectile(Element new_element) : base(new_element)
+	{
+
+	}
+
 	public void Start()
 	{
 
