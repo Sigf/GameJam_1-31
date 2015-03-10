@@ -18,7 +18,7 @@ public class abilityProjectile : Ability {
 
 	public abilityProjectile(Element new_element) : base(new_element)
 	{
-
+		Debug.Log("Projectile Ability instanciated!");
 	}
 
 	public void Start()

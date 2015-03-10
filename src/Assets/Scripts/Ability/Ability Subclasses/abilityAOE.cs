@@ -18,6 +18,8 @@ public class abilityAOE : Ability {
 		_radiusLevel = 0;
 		_durationLevel = 0;
 
+		Debug.Log("AOE Ability instanciated!");
+
 	}
 
 	public override void Cast(Vector3 castPoint)

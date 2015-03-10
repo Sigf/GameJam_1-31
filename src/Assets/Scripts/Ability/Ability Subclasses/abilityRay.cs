@@ -15,7 +15,7 @@ public class abilityRay : Ability {
 
 	public abilityRay(Element new_element) : base(new_element)
 	{
-
+		Debug.Log("Ray Ability instanciated!");
 	}
 
 	public override void Cast(Vector3 castPoint)

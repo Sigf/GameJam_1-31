@@ -37,6 +37,9 @@ public class Ability {
 	public Ability(Element new_element)
 	{
 		element = new_element;
+		Debug.Log ("New Ability created.");
+		Debug.Log ("Element is:");
+		Debug.Log (element);
 		onCD = false;
 		finalUpgrade = false;
 	}
