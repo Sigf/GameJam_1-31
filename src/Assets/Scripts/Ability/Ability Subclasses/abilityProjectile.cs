@@ -32,8 +32,6 @@ public class abilityProjectile : Ability {
 
 	public abilityProjectile(Element new_element) : base(new_element)
 	{
-		Debug.Log("Projectile Ability instanciated!");
-
 		this.rangeLevel = 0;
 		this.speedLevel = 0;
 		this.projectilesLevel = 0;
@@ -42,6 +40,11 @@ public class abilityProjectile : Ability {
 		this.range = range_array [rangeLevel];
 		this.speed = speed_array [speedLevel];
 		this.projectiles = projectiles_array [projectilesLevel];
+
+		this.explosive = false;
+		this.lingering = false;
+
+		Debug.Log("Projectile Ability instanciated!");
 	}
 
 	public void Start()
