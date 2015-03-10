@@ -13,7 +13,7 @@ public class Ability {
 		Dark
 	}
 
-	public Element element;
+	protected Element element;
 
 	// xp might night to move to player class now that the player invests xp.
 	//public int xp;
@@ -22,17 +22,17 @@ public class Ability {
 	//public int curLevel;
 
 	// Static int array of required xp to invest for each levels.
-	public int[] nextLevelXp = new int[5]{10, 20, 40, 80, 160};
+	protected int[] nextLevelXp = new int[5]{10, 20, 40, 80, 160};
 
-	public int dmg;
-	public int dmg_lvl = 0;
-	public int[] dmg_array = new int[]{5,10,15,20,25};
+	protected int dmg;
+	protected int dmg_lvl = 0;
+	protected int[] dmg_array = new int[]{5,10,15,20,25};
 
-	public float cdTimer;
-	public bool onCD;
-	public float cdEndTime;
+	protected float cdTimer;
+	protected bool onCD;
+	protected float cdEndTime;
 
-	public bool finalUpgrade;
+	protected bool finalUpgrade;
 
 	public Ability(Element new_element)
 	{
