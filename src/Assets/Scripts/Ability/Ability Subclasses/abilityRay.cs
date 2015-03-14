@@ -39,7 +39,9 @@ public class abilityRay : Ability {
 		this.lingering = false;
 		this.piercing = false;
 
-		Debug.Log("Ray Ability instanciated!");
+		if (this._debug) {
+			Debug.Log ("Ray Ability instanciated!");
+		}
 	}
 
 	public override void Cast(Vector3 castPoint)

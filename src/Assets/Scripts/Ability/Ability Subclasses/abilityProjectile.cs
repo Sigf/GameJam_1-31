@@ -44,7 +44,9 @@ public class abilityProjectile : Ability {
 		this.explosive = false;
 		this.lingering = false;
 
-		Debug.Log("Projectile Ability instanciated!");
+		if (this._debug) {
+			Debug.Log ("Projectile Ability instanciated!");
+		}
 	}
 
 	public void Start()

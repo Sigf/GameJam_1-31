@@ -5,6 +5,8 @@ using System.Collections;
 [System.Serializable] //made it serializable so that way we can use it in editor extensions and such
 public class Ability {
 
+	public bool _debug = false;
+
 	public enum Element{
 		Frost,
 		Poison,
@@ -40,9 +42,11 @@ public class Ability {
 		this.onCD = false;
 		this.finalUpgrade = false;
 
-		Debug.Log ("New Ability created.");
-		Debug.Log ("Element is:");
-		Debug.Log (element);
+		if (this._debug) {
+			Debug.Log ("New Ability created.");
+			Debug.Log ("Element is:");
+			Debug.Log (element);
+		}
 	}
 
 	public virtual void Cast(Vector3 castPoint)

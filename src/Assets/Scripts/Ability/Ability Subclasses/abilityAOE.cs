@@ -34,8 +34,9 @@ public class abilityAOE : Ability {
 
 		this.lingering = false;
 
-		Debug.Log("AOE Ability instanciated!");
-
+		if (this._debug) {
+			Debug.Log ("AOE Ability instanciated!");
+		}
 	}
 
 	public override void Cast(Vector3 castPoint)
