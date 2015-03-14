@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class player : MonoBehaviour {
+public class player_controller : MonoBehaviour {
 	public inputState _state;
 	private charController2D _controller;
 	
@@ -9,6 +9,7 @@ public class player : MonoBehaviour {
 	void Start () {
 		_state = new inputState();
 		_controller = GetComponent<charController2D>();
+
 	}
 
 	void HandleInput(){

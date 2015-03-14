@@ -130,7 +130,7 @@
      <Compile Include="Assets\Scripts\Controllers\charControllerParameters.cs" />
      <Compile Include="Assets\Scripts\Controllers\controllerState.cs" />
      <Compile Include="Assets\Scripts\Controllers\follow_mouse.cs" />
-     <Compile Include="Assets\Scripts\Controllers\player.cs" />
+     <Compile Include="Assets\Scripts\Controllers\player_controller.cs" />
      <Compile Include="Assets\Scripts\Environment\door_behavior.cs" />
      <Compile Include="Assets\Scripts\Environment\reveal_content.cs" />
      <Compile Include="Assets\Scripts\Input\inputState.cs" />
