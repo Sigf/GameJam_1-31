@@ -114,14 +114,14 @@ public class player : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.Box (new Rect(10, 10, 160, 20), "Health: " + this.health);
-		GUI.Box (new Rect(10, 30, 160, 20), "DNA: " + this.dna);
-		GUI.Box (new Rect(10, 50, 160, 20), "Abilities (M to toggle)");
+		GUI.Box (new Rect(10, 10, 160, 25), "Health: " + this.health);
+		GUI.Box (new Rect(10, 35, 160, 25), "DNA: " + this.dna);
+		GUI.Box (new Rect(10, 60, 160, 25), "Abilities (M to toggle)");
 		if (menu_active)
 		{
 			for (int i = 0; i < abilities.Length; i++) 
 			{
-				abilities [i].draw_status (10 + (i * 160), 70);
+				abilities [i].draw_status (10 + (i * 160), 85);
 			}
 		}
 		//Debug.Log (this.health);

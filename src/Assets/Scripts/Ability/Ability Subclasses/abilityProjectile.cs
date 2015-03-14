@@ -86,7 +86,7 @@ public class abilityProjectile : Ability {
 
 	public override void draw_status(int x, int y)
 	{
-		int cell_height = 20;
+		int cell_height = 25;
 		int cell_width = 160;
 		
 		string element_str = getElementString ();
