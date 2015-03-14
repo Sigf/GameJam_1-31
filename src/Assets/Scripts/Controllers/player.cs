@@ -79,6 +79,23 @@ public class player : MonoBehaviour {
 		else if(Input.GetKeyUp (KeyCode.Mouse0)){
 			_state.atkPressed = false;
 		}
+
+		// debug key strokes
+		if (Input.GetKeyDown (KeyCode.F1)) {
+			this.health -= 5;
+		}
+
+		if (Input.GetKeyDown (KeyCode.F2)) {
+			this.health += 5;
+		}
+
+		if (Input.GetKeyDown (KeyCode.F3)) {
+			this.dna -= 5;
+		}
+
+		if (Input.GetKeyDown (KeyCode.F4)) {
+			this.dna += 5;
+		}
 		
 	}
 	
@@ -87,5 +104,12 @@ public class player : MonoBehaviour {
 		HandleInput ();
 		_controller.passInput(ref _state);
 
+	}
+
+	void OnGUI() {
+		GUI.Box (new Rect(10, 10, 160, 20), "Health: " + this.health);
+		GUI.Box (new Rect(10, 30, 160, 20), "DNA: " + this.dna);
+		GUI.Box (new Rect(10, 50, 160, 20), "--Abilities--");
+		//Debug.Log (this.health);
 	}
 }
