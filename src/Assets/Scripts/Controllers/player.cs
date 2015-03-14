@@ -22,8 +22,10 @@ public class player : MonoBehaviour {
 		this.abilities [0] = new abilityAOE (Ability.Element.Fire);
 		this.abilities [1] = new abilityProjectile (Ability.Element.Dark);
 		this.abilities [2] = new abilityRay (Ability.Element.Fire);
-		this.abilities [3] = new abilityProjectile (Ability.Element.Electric);
-		this.abilities [4] = new abilityRay (Ability.Element.Frost);
+		//this.abilities [3] = new abilityProjectile (Ability.Element.Electric);
+		//this.abilities [4] = new abilityRay (Ability.Element.Frost);
+		this.abilities [3] = null;
+		this.abilities [4] = null;
 
 	}
 
@@ -121,7 +123,17 @@ public class player : MonoBehaviour {
 		{
 			for (int i = 0; i < abilities.Length; i++) 
 			{
-				abilities [i].draw_status (10 + (i * 160), 85);
+				if(abilities[i] != null){
+					abilities [i].draw_status (10 + (i * 160), 85);
+					if(GUI.Button(new Rect(10 + (i * 160),330, 160, 25), "Update Damage" )){
+						int attempt_update = abilities[i].updateDamage(this.dna);
+						
+						if(attempt_update != -1) this.dna = attempt_update;
+					}
+				}
+				else {
+					GUI.Box(new Rect(10 + (i * 160), 85, 160, 25), "--Empty--");
+				}
 			}
 		}
 		//Debug.Log (this.health);

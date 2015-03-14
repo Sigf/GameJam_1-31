@@ -92,6 +92,8 @@ public abstract class Ability {
 		return element_str;
 	}
 
+	public abstract int updateDamage(int dna_given);
+
 	public abstract void draw_status (int x, int y);
 
 	// accessors

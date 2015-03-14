@@ -84,6 +84,21 @@ public class abilityProjectile : Ability {
 
 	}
 
+	public override int updateDamage(int dna_given)
+	{
+		int dna_required = this.nextLevelXp[damageLevel];
+		
+		if (dna_given >= dna_required) {
+			damageLevel += 1;
+			this.damage = damage_array [damageLevel];
+			return dna_given - dna_given;
+		} 
+		
+		else {
+			return -1;
+		}
+	}
+
 	public override void draw_status(int x, int y)
 	{
 		int cell_height = 25;
