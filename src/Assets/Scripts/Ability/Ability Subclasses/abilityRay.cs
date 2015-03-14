@@ -59,7 +59,18 @@ public class abilityRay : Ability {
 
 	public override void draw_status(int x, int y)
 	{
+		int cell_height = 20;
+		int cell_width = 160;
 		
+		string element_str = getElementString ();
+		
+		GUI.Box (new Rect(x, y, cell_width, cell_height), element_str + " - Ray");
+		GUI.Box (new Rect(x, y + cell_height, cell_width, cell_height), "Damage: " + this.damage);
+		GUI.Box (new Rect(x, y + 2*cell_height, cell_width, cell_height), "Damage Level: " + this.damageLevel);
+		GUI.Box (new Rect(x, y + 3*cell_height, cell_width, cell_height), "Width: " + this.width);
+		GUI.Box (new Rect(x, y + 4*cell_height, cell_width, cell_height), "Width Level: " + this.widthLevel);
+		GUI.Box (new Rect(x, y + 5*cell_height, cell_width, cell_height), "Duration: " + this.duration);
+		GUI.Box (new Rect(x, y + 6*cell_height, cell_width, cell_height), "Duration Level: " + this.durationLevel);
 	}
 
 	// Accessors

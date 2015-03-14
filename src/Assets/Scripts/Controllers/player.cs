@@ -110,6 +110,10 @@ public class player : MonoBehaviour {
 		GUI.Box (new Rect(10, 10, 160, 20), "Health: " + this.health);
 		GUI.Box (new Rect(10, 30, 160, 20), "DNA: " + this.dna);
 		GUI.Box (new Rect(10, 50, 160, 20), "--Abilities--");
+		for (int i = 0; i < abilities.Length; i++)
+		{
+			abilities[i].draw_status(10 + (i*160), 70);
+		}
 		//Debug.Log (this.health);
 	}
 }

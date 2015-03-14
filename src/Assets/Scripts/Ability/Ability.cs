@@ -62,6 +62,36 @@ public abstract class Ability {
 
 	}
 
+	public string getElementString()
+	{
+		string element_str = "";
+		
+		switch (this.element) 
+		{
+		case Element.Frost:
+			element_str = "Frost";
+			break;
+
+		case Element.Poison:
+			element_str = "Poison";
+			break;
+		
+		case Element.Fire:
+			element_str = "Fire";
+			break;
+
+		case Element.Electric:
+			element_str = "Electric";
+			break;
+
+		case Element.Dark:
+			element_str = "Dark";
+			break;
+		}
+
+		return element_str;
+	}
+
 	public abstract void draw_status (int x, int y);
 
 	// accessors
