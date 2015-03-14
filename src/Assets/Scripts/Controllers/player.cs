@@ -1,14 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class player_controller : MonoBehaviour {
+public class player : MonoBehaviour {
 	public inputState _state;
 	private charController2D _controller;
+
+	private Ability[] abilities = new Ability[5];
+	private int health;
+	private int dna;
 	
 	// Use this for initialization
 	void Start () {
 		_state = new inputState();
 		_controller = GetComponent<charController2D>();
+
+		this.health = 100;
+		this.dna = 0;
+
+		this.abilities [0] = new abilityAOE (Ability.Element.Fire);
+		this.abilities [1] = new abilityProjectile (Ability.Element.Dark);
+		this.abilities [2] = new abilityRay (Ability.Element.Fire);
+		this.abilities [3] = new abilityProjectile (Ability.Element.Electric);
+		this.abilities [4] = new abilityRay (Ability.Element.Frost);
 
 	}
 

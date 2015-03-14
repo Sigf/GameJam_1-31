@@ -14,9 +14,9 @@ public class playerStats {
 	public void loadAbilities()
 	{
 		curAbility = 1;
-		abilities [0] = new abilityAOE (Ability.Element.Fire);
-		abilities [1] = new abilityProjectile (Ability.Element.Poison);
-		abilities [2] = new abilityRay (Ability.Element.Dark);
+		//abilities [0] = new abilityAOE (Ability.Element.Fire);
+		//abilities [1] = new abilityProjectile (Ability.Element.Poison);
+		//abilities [2] = new abilityRay (Ability.Element.Dark);
 	}
 
 	public void printCurAbility(){
