@@ -8,6 +8,8 @@ public class player : MonoBehaviour {
 	private Ability[] abilities = new Ability[5];
 	private int health;
 	private int dna;
+
+	private bool menu_active = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -96,6 +98,11 @@ public class player : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.F4)) {
 			this.dna += 5;
 		}
+
+		// toggle menu
+		if (Input.GetKeyDown (KeyCode.M)) {
+			this.menu_active = this.menu_active ? false : true;
+		}
 		
 	}
 	
@@ -109,10 +116,13 @@ public class player : MonoBehaviour {
 	void OnGUI() {
 		GUI.Box (new Rect(10, 10, 160, 20), "Health: " + this.health);
 		GUI.Box (new Rect(10, 30, 160, 20), "DNA: " + this.dna);
-		GUI.Box (new Rect(10, 50, 160, 20), "--Abilities--");
-		for (int i = 0; i < abilities.Length; i++)
+		GUI.Box (new Rect(10, 50, 160, 20), "Abilities (M to toggle)");
+		if (menu_active)
 		{
-			abilities[i].draw_status(10 + (i*160), 70);
+			for (int i = 0; i < abilities.Length; i++) 
+			{
+				abilities [i].draw_status (10 + (i * 160), 70);
+			}
 		}
 		//Debug.Log (this.health);
 	}
