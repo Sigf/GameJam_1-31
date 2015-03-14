@@ -15,7 +15,7 @@ public class playerStats {
 	}
 
 	public void printCurAbility(){
-		Debug.Log ("Current Ability is: " + curAbility);
+		//Debug.Log ("Current Ability is: " + curAbility);
 	}
 
 	public void setAbility(int id, Ability ability){

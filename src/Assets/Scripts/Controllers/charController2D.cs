@@ -257,7 +257,7 @@ public class charController2D : MonoBehaviour {
 	void OnGUI()
 	{
 
-		GUI.Box(new Rect(100,100,180, 80), "Current Ability: " + _stats.curAbility);
+		//GUI.Box(new Rect(100,100,180, 80), "Current Ability: " + _stats.curAbility);
 	
 	}
 
