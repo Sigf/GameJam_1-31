@@ -61,4 +61,16 @@ public class Ability {
 	{
 
 	}
+
+	// accessors
+
+	public float getDamage()
+	{
+		return this.damage;
+	}
+
+	public int getDamageLevel()
+	{
+		return this.damageLevel;
+	}
 }

@@ -52,4 +52,31 @@ public class abilityAOE : Ability {
 		
 	}
 
+	// accessors
+
+	public float getRadius()
+	{
+		return this.radius;
+	}
+
+	public int getRadiusLevel()
+	{
+		return this.radiusLevel;
+	}
+
+	public float getDuration()
+	{
+		return this.duration;
+	}
+
+	public int getDurationLevel()
+	{
+		return this.durationLevel;
+	}
+
+	public bool isLingering()
+	{
+		return this.lingering;
+	}
+
 }

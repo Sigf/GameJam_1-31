@@ -83,4 +83,46 @@ public class abilityProjectile : Ability {
 	{
 
 	}
+
+	// Accessor
+
+	public float getRange()
+	{
+		return this.range;
+	}
+	
+	public int getRangeLevel()
+	{
+		return this.rangeLevel;
+	}
+
+	public float getSpeed()
+	{
+		return this.speed;
+	}
+	
+	public int getSpeedLevel()
+	{
+		return this.speedLevel;
+	}
+
+	public int getProjectiles()
+	{
+		return this.projectiles;
+	}
+	
+	public int getProjectilesLevel()
+	{
+		return this.projectilesLevel;
+	}
+
+	public bool isExplosive()
+	{
+		return this.explosive;
+	}
+
+	public bool isLingering()
+	{
+		return this.lingering;
+	}
 }

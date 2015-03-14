@@ -56,4 +56,36 @@ public class abilityRay : Ability {
 	{
 		
 	}
+
+	// Accessors
+
+	public float getWidth()
+	{
+		return this.width;
+	}
+	
+	public int getWidthLevel()
+	{
+		return this.widthLevel;
+	}
+
+	public float getDuration()
+	{
+		return this.duration;
+	}
+	
+	public int getDurationLevel()
+	{
+		return this.durationLevel;
+	}
+
+	public bool isLingering()
+	{
+		return this.lingering;
+	}
+
+	public bool isPiercing()
+	{
+		return this.piercing;
+	}
 }
