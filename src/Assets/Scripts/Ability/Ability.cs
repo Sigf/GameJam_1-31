@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 [System.Serializable] //made it serializable so that way we can use it in editor extensions and such
-public class Ability {
+public abstract class Ability {
 
 	public bool _debug = false;
 
@@ -61,6 +61,8 @@ public class Ability {
 	{
 
 	}
+
+	public abstract void draw_status (int x, int y);
 
 	// accessors
 

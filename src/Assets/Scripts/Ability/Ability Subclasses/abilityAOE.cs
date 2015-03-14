@@ -52,6 +52,11 @@ public class abilityAOE : Ability {
 		
 	}
 
+	public override void draw_status(int x, int y)
+	{
+
+	}
+
 	// accessors
 
 	public float getRadius()

@@ -57,6 +57,11 @@ public class abilityRay : Ability {
 		
 	}
 
+	public override void draw_status(int x, int y)
+	{
+		
+	}
+
 	// Accessors
 
 	public float getWidth()

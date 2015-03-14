@@ -84,6 +84,11 @@ public class abilityProjectile : Ability {
 
 	}
 
+	public override void draw_status(int x, int y)
+	{
+		
+	}
+
 	// Accessor
 
 	public float getRange()
