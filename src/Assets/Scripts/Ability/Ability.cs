@@ -94,6 +94,8 @@ public abstract class Ability {
 
 	public abstract int getDnaRequired (string type);
 
+	public abstract string getName ();
+
 	// accessors
 
 	public float getDamage()

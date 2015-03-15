@@ -171,6 +171,11 @@ public class abilityProjectile : Ability {
 		return -1;
 	}
 
+	public override string getName ()
+	{
+		return getElementString() + " - Projectile";
+	}
+
 	// Accessor
 
 	public float getRange()

@@ -128,6 +128,11 @@ public class abilityRay : Ability {
 		return -1;
 	}
 
+	public override string getName ()
+	{
+		return getElementString() + " - Ray";
+	}
+
 	// Accessors
 
 	public float getWidth()

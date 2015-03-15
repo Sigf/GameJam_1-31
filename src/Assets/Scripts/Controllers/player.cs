@@ -6,6 +6,7 @@ public class player : MonoBehaviour {
 	private charController2D _controller;
 
 	private Ability[] abilities = new Ability[5];
+	private Ability equiped_ability;
 	private int health;
 	private int dna;
 
@@ -26,6 +27,8 @@ public class player : MonoBehaviour {
 		//this.abilities [4] = new abilityRay (Ability.Element.Frost);
 		this.abilities [3] = null;
 		this.abilities [4] = null;
+
+		this.equiped_ability = abilities [0];
 
 	}
 
@@ -64,18 +67,23 @@ public class player : MonoBehaviour {
 		}
 		if(Input.GetKeyDown (KeyCode.Alpha1)){
 			_state.onePressed = true;
+			equiped_ability = abilities[0];
 		}
 		else if(Input.GetKeyDown (KeyCode.Alpha2)){
 			_state.twoPressed = true;
+			equiped_ability = abilities[1];
 		}
 		else if(Input.GetKeyDown (KeyCode.Alpha3)){
 			_state.threePressed = true;
+			equiped_ability = abilities[2];
 		}
 		else if(Input.GetKeyDown (KeyCode.Alpha4)){
 			_state.fourPressed = true;
+			equiped_ability = abilities[3];
 		}
 		else if(Input.GetKeyDown (KeyCode.Alpha5)){
 			_state.fivePressed = true;
+			equiped_ability = abilities[4];
 		}
 		if(Input.GetKeyDown (KeyCode.Mouse0)){
 			_state.atkPressed = true;
@@ -119,6 +127,14 @@ public class player : MonoBehaviour {
 		GUI.Box (new Rect(10, 10, 160, 25), "Health: " + this.health);
 		GUI.Box (new Rect(10, 35, 160, 25), "DNA: " + this.dna);
 		GUI.Box (new Rect(10, 60, 160, 25), "Abilities (M to toggle)");
+
+		if (equiped_ability != null) {
+			GUI.Box (new Rect (170, 60, 160, 25), "Equiped: " + equiped_ability.getName ());
+		} 
+		else {
+			GUI.Box (new Rect (170, 60, 160, 25), "No ability equiped!");
+		}
+
 		if (menu_active)
 		{
 			for (int i = 0; i < abilities.Length; i++) 

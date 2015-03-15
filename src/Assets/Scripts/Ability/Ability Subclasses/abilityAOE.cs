@@ -123,6 +123,11 @@ public class abilityAOE : Ability {
 		return -1;
 	}
 
+	public override string getName ()
+	{
+		return getElementString() + " - AOE";
+	}
+
 	// accessors
 
 	public float getRadius()
