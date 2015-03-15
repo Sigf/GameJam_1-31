@@ -56,14 +56,6 @@ public abstract class Ability {
 		}
 	}
 
-	public virtual void Cast(Vector3 castPoint)
-	{
-		if(!onCD)
-		{
-
-		}
-	}
-
 	public string getElementString()
 	{
 		string element_str = "";
@@ -93,6 +85,8 @@ public abstract class Ability {
 
 		return element_str;
 	}
+
+	public abstract void Cast (Vector3 castPoint);
 
 	public abstract int upgrade(int dna_given, string type);
 
