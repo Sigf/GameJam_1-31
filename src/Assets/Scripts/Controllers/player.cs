@@ -87,7 +87,8 @@ public class player : MonoBehaviour {
 		}
 		if(Input.GetKeyDown (KeyCode.Mouse0)){
 			_state.atkPressed = true;
-			equiped_ability.Cast(new Vector3(0,0,0));
+			if(equiped_ability != null)equiped_ability.Cast(new Vector3(0,0,0));
+			else Debug.Log ("No Skill select, normal attack.");
 		}
 		else if(Input.GetKeyUp (KeyCode.Mouse0)){
 			_state.atkPressed = false;
