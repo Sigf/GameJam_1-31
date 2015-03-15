@@ -49,12 +49,7 @@ public class abilityAOE : Ability {
 		}
 	}
 
-	public override void Upgrade()
-	{
-		
-	}
-
-	public override int levelUp(int dna_given, string type)
+	public override int upgrade(int dna_given, string type)
 	{
 		int dna_required;
 

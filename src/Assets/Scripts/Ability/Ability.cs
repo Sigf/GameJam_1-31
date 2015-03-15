@@ -64,11 +64,6 @@ public abstract class Ability {
 		}
 	}
 
-	public virtual void Upgrade()
-	{
-
-	}
-
 	public string getElementString()
 	{
 		string element_str = "";
@@ -99,7 +94,7 @@ public abstract class Ability {
 		return element_str;
 	}
 
-	public abstract int levelUp(int dna_given, string type);
+	public abstract int upgrade(int dna_given, string type);
 
 	public abstract void draw_status (int x, int y);
 
