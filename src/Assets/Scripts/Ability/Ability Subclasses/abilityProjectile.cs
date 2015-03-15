@@ -107,14 +107,10 @@ public class abilityProjectile : Ability {
 		string element_str = getElementString ();
 		
 		GUI.Box (new Rect(x, y, cell_width, cell_height), element_str + " - Projectile");
-		GUI.Box (new Rect(x, y + cell_height, cell_width, cell_height), "Damage: " + this.damage);
-		GUI.Box (new Rect(x, y + 2*cell_height, cell_width, cell_height), "Damage Level: " + this.damageLevel);
-		GUI.Box (new Rect(x, y + 3*cell_height, cell_width, cell_height), "Range: " + this.range);
-		GUI.Box (new Rect(x, y + 4*cell_height, cell_width, cell_height), "Range Level: " + this.rangeLevel);
-		GUI.Box (new Rect(x, y + 5*cell_height, cell_width, cell_height), "Speed: " + this.speed);
-		GUI.Box (new Rect(x, y + 6*cell_height, cell_width, cell_height), "Speed Level: " + this.speedLevel);
-		GUI.Box (new Rect(x, y + 7*cell_height, cell_width, cell_height), "Projectiles Count: " + this.projectiles);
-		GUI.Box (new Rect(x, y + 8*cell_height, cell_width, cell_height), "Projectiles Count Level: " + this.projectilesLevel);
+		GUI.Box (new Rect(x, y + cell_height, cell_width, cell_height), "Damage(" + this.damageLevel + "): " + this.damage);
+		GUI.Box (new Rect(x, y + 2*cell_height, cell_width, cell_height), "Range(" + this.rangeLevel + ": " + this.range);
+		GUI.Box (new Rect(x, y + 3*cell_height, cell_width, cell_height), "Speed(" + this.speedLevel + "): " + this.speed);
+		GUI.Box (new Rect(x, y + 4*cell_height, cell_width, cell_height), "Projectiles Count(" + this.projectilesLevel + "): " + this.projectiles);
 	}
 
 	// Accessor
