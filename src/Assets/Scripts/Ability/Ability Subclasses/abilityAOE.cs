@@ -45,7 +45,7 @@ public class abilityAOE : Ability {
 	{
 		if(!onCD)
 		{
-
+			Debug.Log("Cast called for " + this.getName());
 		}
 	}
 

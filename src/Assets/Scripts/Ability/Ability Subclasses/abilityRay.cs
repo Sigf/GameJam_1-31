@@ -50,7 +50,7 @@ public class abilityRay : Ability {
 	{
 		if(!onCD)
 		{
-
+			Debug.Log("Cast called for " + this.getName());
 		}
 	}
 

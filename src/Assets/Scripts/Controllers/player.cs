@@ -87,6 +87,7 @@ public class player : MonoBehaviour {
 		}
 		if(Input.GetKeyDown (KeyCode.Mouse0)){
 			_state.atkPressed = true;
+			equiped_ability.Cast(new Vector3(0,0,0));
 		}
 		else if(Input.GetKeyUp (KeyCode.Mouse0)){
 			_state.atkPressed = false;

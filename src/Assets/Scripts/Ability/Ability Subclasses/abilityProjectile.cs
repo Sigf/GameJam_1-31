@@ -60,7 +60,8 @@ public class abilityProjectile : Ability {
 	{
 		if(!onCD)
 		{
-			if(projectiles == 1){
+			Debug.Log("Cast called for " + this.getName());
+			/*if(projectiles == 1){
 				GameObject newInstace = MonoBehaviour.Instantiate (projectile, castPoint, Quaternion.identity) as GameObject;
 				//TODO: Send message of type abilityProjectile to a setter function within the projectile
 
@@ -77,7 +78,7 @@ public class abilityProjectile : Ability {
 				 * or maybe just labeling the positions 1-8, and then having an array of castPoint would be good, so it essentially just iterates through each and passes them the info they need 
 				 * We could even incorporate both, perhaps have a dropdown option that lets them choose if the projectiles are unidirectional or not
 				 */
-			}
+			//}
 		}
 	}
 
