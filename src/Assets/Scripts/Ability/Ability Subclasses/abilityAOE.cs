@@ -25,6 +25,8 @@ public class abilityAOE : Ability {
 
 	public abilityAOE(Element new_element) : base(new_element)
 	{
+		this.attackType = AttackType._AOE;
+
 		this.radiusLevel = 0;
 		this.durationLevel = 0;
 

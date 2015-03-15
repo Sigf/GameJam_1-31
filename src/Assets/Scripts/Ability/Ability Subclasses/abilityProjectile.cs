@@ -32,6 +32,8 @@ public class abilityProjectile : Ability {
 
 	public abilityProjectile(Element new_element) : base(new_element)
 	{
+		this.attackType = AttackType._Projectile;
+
 		this.rangeLevel = 0;
 		this.speedLevel = 0;
 		this.projectilesLevel = 0;

@@ -28,6 +28,8 @@ public class abilityRay : Ability {
 
 	public abilityRay(Element new_element) : base(new_element)
 	{
+		this.attackType = AttackType._Ray;
+
 		this.damageLevel = 0;
 		this.widthLevel = 0;
 		this.durationLevel = 0;

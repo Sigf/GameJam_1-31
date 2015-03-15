@@ -15,7 +15,14 @@ public abstract class Ability {
 		Dark
 	}
 
+	public enum AttackType{
+		_AOE,
+		_Projectile,
+		_Ray
+	}
+
 	protected Element element;
+	protected AttackType attackType;
 
 	// xp might night to move to player class now that the player invests xp.
 	//public int xp;
@@ -106,5 +113,9 @@ public abstract class Ability {
 	public int getDamageLevel()
 	{
 		return this.damageLevel;
+	}
+
+	public AttackType getType(){
+		return this.attackType;
 	}
 }

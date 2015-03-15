@@ -126,9 +126,8 @@ public class player : MonoBehaviour {
 				if(abilities[i] != null){
 					abilities [i].draw_status (10 + (i * 160), 85);
 					if(GUI.Button(new Rect(10 + (i * 160),230, 160, 25), "Update Damage" )){
-						int attempt_update = abilities[i].updateDamage(this.dna);
-						
-						if(attempt_update != -1) this.dna = attempt_update;
+						int attempt_update = abilities[i].updateDamage(this.dna);			
+						if(attempt_update <= -1) this.dna = attempt_update;
 					}
 				}
 				else {
@@ -137,5 +136,10 @@ public class player : MonoBehaviour {
 			}
 		}
 		//Debug.Log (this.health);
+	}
+
+	void displayUpdateButtons(int x, int y, Ability ability)
+	{
+
 	}
 }
