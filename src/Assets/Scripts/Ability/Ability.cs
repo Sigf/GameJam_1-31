@@ -99,7 +99,7 @@ public abstract class Ability {
 		return element_str;
 	}
 
-	public abstract int updateDamage(int dna_given);
+	public abstract int levelUp(int dna_given, string type);
 
 	public abstract void draw_status (int x, int y);
 

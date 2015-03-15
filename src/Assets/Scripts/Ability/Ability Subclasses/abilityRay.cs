@@ -59,19 +59,49 @@ public class abilityRay : Ability {
 		
 	}
 
-	public override int updateDamage(int dna_given)
+	public override int levelUp(int dna_given, string type)
 	{
-		int dna_required = this.nextLevelXp[damageLevel];
+		int dna_required;
 		
-		if (dna_given >= dna_required) {
-			damageLevel += 1;
-			this.damage = damage_array [damageLevel];
-			return dna_given - dna_given;
-		} 
-		
-		else {
-			return -1;
+		switch (type)
+		{
+		case "damage":
+			dna_required = this.nextLevelXp[damageLevel];
+			if (dna_given >= dna_required) {
+				damageLevel += 1;
+				this.damage = damage_array [damageLevel];
+				return dna_given - dna_given;
+			} 
+			
+			else {
+				return -1;
+			}
+			
+		case "width":
+			dna_required = this.nextLevelXp[widthLevel];
+			if (dna_given >= dna_required) {
+				widthLevel += 1;
+				this.width = width_array [widthLevel];
+				return dna_given - dna_given;
+			} 
+			
+			else {
+				return -1;
+			}
+			
+		case "duration":
+			dna_required = this.nextLevelXp[durationLevel];
+			if (dna_given >= dna_required) {
+				durationLevel += 1;
+				this.duration = duration_array [durationLevel];
+				return dna_given - dna_given;
+			}
+
+			else {
+				return -1;
+			}
 		}
+		return -1;
 	}
 
 	public override void draw_status(int x, int y)

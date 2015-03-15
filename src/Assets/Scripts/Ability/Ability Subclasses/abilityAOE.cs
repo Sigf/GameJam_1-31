@@ -54,19 +54,49 @@ public class abilityAOE : Ability {
 		
 	}
 
-	public override int updateDamage(int dna_given)
+	public override int levelUp(int dna_given, string type)
 	{
-		int dna_required = this.nextLevelXp[damageLevel];
-		
-		if (dna_given >= dna_required) {
-			damageLevel += 1;
-			this.damage = damage_array [damageLevel];
-			return dna_given - dna_given;
-		} 
+		int dna_required;
 
-		else {
-			return -1;
+		switch (type)
+		{
+		case "damage":
+			dna_required = this.nextLevelXp[damageLevel];
+			if (dna_given >= dna_required) {
+				damageLevel += 1;
+				this.damage = damage_array [damageLevel];
+				return dna_given - dna_given;
+			} 
+			
+			else {
+				return -1;
+			}
+
+		case "radius":
+			dna_required = this.nextLevelXp[radiusLevel];
+			if (dna_given >= dna_required) {
+				radiusLevel += 1;
+				this.radius = radius_array [radiusLevel];
+				return dna_given - dna_given;
+			} 
+			
+			else {
+				return -1;
+			}
+
+		case "duration":
+			dna_required = this.nextLevelXp[durationLevel];
+			if (dna_given >= dna_required) {
+				durationLevel += 1;
+				this.duration = duration_array [durationLevel];
+				return dna_given - dna_given;
+			} 
+			
+			else {
+				return -1;
+			}
 		}
+		return -1;
 	}
 
 	public override void draw_status(int x, int y)

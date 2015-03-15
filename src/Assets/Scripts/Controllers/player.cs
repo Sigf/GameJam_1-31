@@ -125,10 +125,7 @@ public class player : MonoBehaviour {
 			{
 				if(abilities[i] != null){
 					abilities [i].draw_status (10 + (i * 160), 85);
-					if(GUI.Button(new Rect(10 + (i * 160),230, 160, 25), "Update Damage" )){
-						int attempt_update = abilities[i].updateDamage(this.dna);			
-						if(attempt_update <= -1) this.dna = attempt_update;
-					}
+					displayUpdateButtons(10 + (i * 160),230, abilities[i]);
 				}
 				else {
 					GUI.Box(new Rect(10 + (i * 160), 85, 160, 25), "--Empty--");
@@ -140,6 +137,71 @@ public class player : MonoBehaviour {
 
 	void displayUpdateButtons(int x, int y, Ability ability)
 	{
+		int type = (int)ability.getType();
 
+		int cell_height = 25;
+		int cell_width = 160;
+
+		switch(type)
+		{
+		case 0:
+
+			if(GUI.Button(new Rect(x, y + (0 * cell_height), cell_width, cell_height), "Update Damage" )){
+				int attempt_update = ability.levelUp(this.dna, "damage");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+			
+			if(GUI.Button(new Rect(x, y + (1 * cell_height), cell_width, cell_height), "Update Radius" )){
+				int attempt_update = ability.levelUp(this.dna, "radius");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+			
+			if(GUI.Button(new Rect(x, y + (2 * cell_height), cell_width, cell_height), "Update Duration" )){
+				int attempt_update = ability.levelUp(this.dna, "duration");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+			break;
+
+		case 1:
+
+			if(GUI.Button(new Rect(x, y + (0 * cell_height), cell_width, cell_height), "Update Damage" )){
+				int attempt_update = ability.levelUp(this.dna, "damage");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+			
+			if(GUI.Button(new Rect(x, y + (1 * cell_height), cell_width, cell_height), "Update Range" )){
+				int attempt_update = ability.levelUp(this.dna, "range");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+			
+			if(GUI.Button(new Rect(x, y + (2 * cell_height), cell_width, cell_height), "Update Speed" )){
+				int attempt_update = ability.levelUp(this.dna, "speed");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+
+			if(GUI.Button(new Rect(x, y + (3 * cell_height), cell_width, cell_height), "Update Projectiles" )){
+				int attempt_update = ability.levelUp(this.dna, "projectiles");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+			break;
+
+		case 2:
+
+			if(GUI.Button(new Rect(x, y + (0 * cell_height), cell_width, cell_height), "Update Damage" )){
+				int attempt_update = ability.levelUp(this.dna, "damage");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+
+			if(GUI.Button(new Rect(x, y + (1 * cell_height), cell_width, cell_height), "Update Width" )){
+				int attempt_update = ability.levelUp(this.dna, "width");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+
+			if(GUI.Button(new Rect(x, y + (2 * cell_height), cell_width, cell_height), "Update Duration" )){
+				int attempt_update = ability.levelUp(this.dna, "duration");
+				if(attempt_update <= -1) this.dna = attempt_update;
+			}
+			break;
+		}
 	}
 }

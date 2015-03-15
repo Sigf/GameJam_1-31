@@ -86,19 +86,61 @@ public class abilityProjectile : Ability {
 
 	}
 
-	public override int updateDamage(int dna_given)
+	public override int levelUp(int dna_given, string type)
 	{
-		int dna_required = this.nextLevelXp[damageLevel];
+		int dna_required;
 		
-		if (dna_given >= dna_required) {
-			damageLevel += 1;
-			this.damage = damage_array [damageLevel];
-			return dna_given - dna_given;
-		} 
+		switch (type)
+		{
+		case "damage":
+			dna_required = this.nextLevelXp[damageLevel];
+			if (dna_given >= dna_required) {
+				damageLevel += 1;
+				this.damage = damage_array [damageLevel];
+				return dna_given - dna_given;
+			} 
+			
+			else {
+				return -1;
+			}
+			
+		case "range":
+			dna_required = this.nextLevelXp[rangeLevel];
+			if (dna_given >= dna_required) {
+				rangeLevel += 1;
+				this.range = range_array [rangeLevel];
+				return dna_given - dna_given;
+			} 
+			
+			else {
+				return -1;
+			}
+			
+		case "speed":
+			dna_required = this.nextLevelXp[speedLevel];
+			if (dna_given >= dna_required) {
+				speedLevel += 1;
+				this.speed = speed_array [speedLevel];
+				return dna_given - dna_given;
+			} 
+			
+			else {
+				return -1;
+			}
+
+		case "projectiles":
+			dna_required = this.nextLevelXp[projectilesLevel];
+			if (dna_given >= dna_required) {
+				projectilesLevel += 1;
+				this.projectiles = projectiles_array [projectilesLevel];
+				return dna_given - dna_given;
+			} 
 		
-		else {
-			return -1;
+			else {
+				return -1;
+			}
 		}
+		return -1;
 	}
 
 	public override void draw_status(int x, int y)
