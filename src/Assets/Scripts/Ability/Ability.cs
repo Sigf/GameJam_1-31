@@ -92,6 +92,8 @@ public abstract class Ability {
 
 	public abstract void draw_status (int x, int y);
 
+	public abstract int getDnaRequired (string type);
+
 	// accessors
 
 	public float getDamage()

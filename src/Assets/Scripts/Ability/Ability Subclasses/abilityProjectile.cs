@@ -92,7 +92,7 @@ public class abilityProjectile : Ability {
 			if (dna_given >= dna_required) {
 				damageLevel += 1;
 				this.damage = damage_array [damageLevel];
-				return dna_given - dna_given;
+				return dna_given - dna_required;
 			} 
 			
 			else {
@@ -104,7 +104,7 @@ public class abilityProjectile : Ability {
 			if (dna_given >= dna_required) {
 				rangeLevel += 1;
 				this.range = range_array [rangeLevel];
-				return dna_given - dna_given;
+				return dna_given - dna_required;
 			} 
 			
 			else {
@@ -116,7 +116,7 @@ public class abilityProjectile : Ability {
 			if (dna_given >= dna_required) {
 				speedLevel += 1;
 				this.speed = speed_array [speedLevel];
-				return dna_given - dna_given;
+				return dna_given - dna_required;
 			} 
 			
 			else {
@@ -128,7 +128,7 @@ public class abilityProjectile : Ability {
 			if (dna_given >= dna_required) {
 				projectilesLevel += 1;
 				this.projectiles = projectiles_array [projectilesLevel];
-				return dna_given - dna_given;
+				return dna_given - dna_required;
 			} 
 		
 			else {
@@ -150,6 +150,25 @@ public class abilityProjectile : Ability {
 		GUI.Box (new Rect(x, y + 2*cell_height, cell_width, cell_height), "Range(" + this.rangeLevel + ": " + this.range);
 		GUI.Box (new Rect(x, y + 3*cell_height, cell_width, cell_height), "Speed(" + this.speedLevel + "): " + this.speed);
 		GUI.Box (new Rect(x, y + 4*cell_height, cell_width, cell_height), "Projectiles Count(" + this.projectilesLevel + "): " + this.projectiles);
+	}
+
+	public override int getDnaRequired(string type)
+	{
+		switch (type)
+		{
+		case "damage":
+			return this.nextLevelXp[damageLevel];
+			
+		case "range":
+			return this.nextLevelXp[rangeLevel];
+			
+		case "speed":
+			return this.nextLevelXp[speedLevel];
+
+		case "projectiles":
+			return this.nextLevelXp[projectilesLevel];
+		}
+		return -1;
 	}
 
 	// Accessor

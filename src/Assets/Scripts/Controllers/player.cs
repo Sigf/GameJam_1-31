@@ -146,17 +146,17 @@ public class player : MonoBehaviour {
 		{
 		case 0:
 
-			if(GUI.Button(new Rect(x, y + (0 * cell_height), cell_width, cell_height), "Update Damage" )){
+			if(GUI.Button(new Rect(x, y + (0 * cell_height), cell_width, cell_height), "Update Damage(" + ability.getDnaRequired("damage") + ")" )){
 				int attempt_update = ability.upgrade(this.dna, "damage");
 				if(attempt_update > -1) this.dna = attempt_update;
 			}
 			
-			if(GUI.Button(new Rect(x, y + (1 * cell_height), cell_width, cell_height), "Update Radius" )){
+			if(GUI.Button(new Rect(x, y + (1 * cell_height), cell_width, cell_height), "Update Radius(" + ability.getDnaRequired("radius") + ")" )){
 				int attempt_update = ability.upgrade(this.dna, "radius");
 				if(attempt_update > -1) this.dna = attempt_update;
 			}
 			
-			if(GUI.Button(new Rect(x, y + (2 * cell_height), cell_width, cell_height), "Update Duration" )){
+			if(GUI.Button(new Rect(x, y + (2 * cell_height), cell_width, cell_height), "Update Duration(" + ability.getDnaRequired("duration") + ")" )){
 				int attempt_update = ability.upgrade(this.dna, "duration");
 				if(attempt_update > -1) this.dna = attempt_update;
 			}

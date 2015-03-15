@@ -60,7 +60,7 @@ public class abilityAOE : Ability {
 			if (dna_given >= dna_required) {
 				damageLevel += 1;
 				this.damage = damage_array [damageLevel];
-				return dna_given - dna_given;
+				return dna_given - dna_required;
 			} 
 			
 			else {
@@ -72,7 +72,7 @@ public class abilityAOE : Ability {
 			if (dna_given >= dna_required) {
 				radiusLevel += 1;
 				this.radius = radius_array [radiusLevel];
-				return dna_given - dna_given;
+				return dna_given - dna_required;
 			} 
 			
 			else {
@@ -84,7 +84,7 @@ public class abilityAOE : Ability {
 			if (dna_given >= dna_required) {
 				durationLevel += 1;
 				this.duration = duration_array [durationLevel];
-				return dna_given - dna_given;
+				return dna_given - dna_required;
 			} 
 			
 			else {
@@ -105,6 +105,22 @@ public class abilityAOE : Ability {
 		GUI.Box (new Rect(x, y + cell_height, cell_width, cell_height), "Damage(" + this.damageLevel + "): " + this.damage);
 		GUI.Box (new Rect(x, y + 2*cell_height, cell_width, cell_height), "Radius(" + this.radiusLevel + "): " + this.radius);
 		GUI.Box (new Rect(x, y + 3*cell_height, cell_width, cell_height), "Duration(" + this.durationLevel + "): " + this.duration);
+	}
+
+	public override int getDnaRequired(string type)
+	{
+		switch (type)
+		{
+		case "damage":
+			return this.nextLevelXp[damageLevel];
+		
+		case "radius":
+			return this.nextLevelXp[radiusLevel];
+
+		case "duration":
+			return this.nextLevelXp[durationLevel];
+		}
+		return -1;
 	}
 
 	// accessors
