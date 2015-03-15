@@ -22,10 +22,10 @@ public class player_attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
-			if(left) animator.SetInteger ("attacks", 2);
-			else animator.SetInteger ("attacks", 1);
+			if(left) animator.SetTrigger ("attacks_left");
+			else animator.SetTrigger ("attacks_right");
 
-			cooldown = true;
+			//cooldown = true;
 			left = !left;
 		}
 
