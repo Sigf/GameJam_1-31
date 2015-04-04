@@ -26,6 +26,8 @@ public class abilityRay : Ability {
 
 	float percentReduction;
 
+	public Transform attack;
+
 	public abilityRay(Element new_element) : base(new_element)
 	{
 		this.attackType = AttackType._Ray;
@@ -51,26 +53,9 @@ public class abilityRay : Ability {
 		if(!onCD)
 		{
 			Debug.Log("Cast called for " + this.getName());
-		}
-
-		GameObject player = GameObject.Find ("Player");
-		if (player == null) {
-			Debug.Log ("could not find player object.");
-		}
-
-		Vector2 player_pos = player.transform.position;
-		Vector2 mouse_pos = Input.mousePosition;
-
-		int layer = LayerMask.NameToLayer ("Wall");
-
-		mouse_pos = Camera.main.ScreenToWorldPoint (mouse_pos);
-
-		Vector2 direction = (mouse_pos - player_pos).normalized;
-
-		RaycastHit2D hit = Physics2D.Raycast(player_pos, direction, 10000.0f);
-
-		if (hit) {
-			Debug.DrawLine(player_pos, hit.point, Color.red, 2.0f, false);
+			GameObject newAttack = (GameObject)MonoBehaviour.Instantiate(Resources.Load("Ray_Attack"), Vector3.zero, Quaternion.identity);
+			Ray_Attack script = newAttack.GetComponent<Ray_Attack>();
+			script.ability = this;
 		}
 	}
 
