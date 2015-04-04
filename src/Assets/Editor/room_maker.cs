@@ -42,7 +42,7 @@ public class room_maker : EditorWindow {
 		if (GUILayout.Button ("Create Room")) {
 			// create root game object to store the room
 			GameObject root = new GameObject(room_name);
-			root.AddComponent("reveal_content");
+			root.AddComponent<reveal_content>();
 			// create top wall
 			if(!ignore_top) createWall(Vector3.zero, width, false, false, root);
 			// create right wall

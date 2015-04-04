@@ -66,7 +66,7 @@ public class charController2D : MonoBehaviour {
 	{
 
 		var size = new Vector2(_boxCollider.size.x, _boxCollider.size.y)/2;
-		var center = new Vector2(_boxCollider.center.x, _boxCollider.center.y)/2;
+		var center = new Vector2(_boxCollider.offset.x, _boxCollider.offset.y)/2;
 
 		_rayTopLeft = _transform.position + new Vector3(center.x - size.x + skinWidth, center.y + size.y - skinWidth);
 		_rayBottomLeft = _transform.position + new Vector3(center.x -size.x + skinWidth, center.y - size.y + skinWidth);
