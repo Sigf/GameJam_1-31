@@ -85,13 +85,10 @@ public class Ray_Attack : MonoBehaviour {
 		RaycastHit2D hit = Physics2D.Raycast(player_pos, direction, 1000.0f);
 		
 		if (hit) {
-			Debug.DrawLine(player_pos, hit.point, Color.red, 0.0f ,false);
-
-			// display the sprites here
+			//Debug.DrawLine(player_pos, hit.point, Color.red, 0.0f ,false);
 
 			float ray_width = 0.08f;
 			float distance = hit.distance;
-			//distance = Mathf.Clamp(distance, 0.0f, this.max_range);
 
 			if(distance > this.max_range){
 				distance = this.max_range;
@@ -101,9 +98,6 @@ public class Ray_Attack : MonoBehaviour {
 			else{
 				direction = (hit.point - player_pos);
 			}
-
-			Debug.Log (distance);
-			//float impact_width = 0.16f;
 
 			int ray_sections = Mathf.CeilToInt(distance / ray_width);
 			Vector2 newPos;
@@ -120,7 +114,7 @@ public class Ray_Attack : MonoBehaviour {
 					angle *= -1.0f;
 				}
 
-				rotation = Quaternion.AngleAxis(angle, Vector3.forward); //still not working right
+				rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 				Object new_body = GameObject.Instantiate(this.ray_sprite, newPos, rotation);
 				ray_body.Add(new_body);
