@@ -12,6 +12,7 @@ public class Ray_Attack : MonoBehaviour {
 	public GameObject impact_sprite;
 	private float start_time = Time.time;
 	private float now;
+	private float max_range;
 
 	private List<Object> ray_body;
 
@@ -39,12 +40,13 @@ public class Ray_Attack : MonoBehaviour {
 		
 		mouse_pos = Camera.main.ScreenToWorldPoint (mouse_pos);
 
-		draw_ray(player_pos, mouse_pos, 1000.0f);
+		draw_ray(player_pos, mouse_pos);
 
 	}
 
-	public void init(Ability ability){
+	public void init(Ability ability, float max_range){
 		this.ability = ability;
+		this.max_range = max_range;
 		this.timeToLive = ((abilityRay)ability).getDuration();
 
 		string element = ability.getElementString();
@@ -77,10 +79,10 @@ public class Ray_Attack : MonoBehaviour {
 		}
 	}
 
-	private void draw_ray(Vector2 player_pos, Vector2 mouse_pos, float max_range){
+	private void draw_ray(Vector2 player_pos, Vector2 mouse_pos){
 		Vector2 direction = (mouse_pos - player_pos).normalized;
 		
-		RaycastHit2D hit = Physics2D.Raycast(player_pos, direction, max_range);
+		RaycastHit2D hit = Physics2D.Raycast(player_pos, direction, 1000.0f);
 		
 		if (hit) {
 			Debug.DrawLine(player_pos, hit.point, Color.red, 0.0f ,false);
@@ -88,11 +90,22 @@ public class Ray_Attack : MonoBehaviour {
 			// display the sprites here
 
 			float ray_width = 0.08f;
+			float distance = hit.distance;
+			//distance = Mathf.Clamp(distance, 0.0f, this.max_range);
+
+			if(distance > this.max_range){
+				distance = this.max_range;
+				direction *= distance;
+			}
+
+			else{
+				direction = (hit.point - player_pos);
+			}
+
+			Debug.Log (distance);
 			//float impact_width = 0.16f;
 
-			direction = (hit.point - player_pos);
-
-			int ray_sections = Mathf.CeilToInt(hit.distance / ray_width);
+			int ray_sections = Mathf.CeilToInt(distance / ray_width);
 			Vector2 newPos;
 			float angle;
 
@@ -116,7 +129,6 @@ public class Ray_Attack : MonoBehaviour {
 			Vector2 impact_pos = player_pos + direction;
 			Object new_impact = GameObject.Instantiate(this.impact_sprite, impact_pos, rotation);
 			ray_body.Add(new_impact);
-
 		}
 	}
 

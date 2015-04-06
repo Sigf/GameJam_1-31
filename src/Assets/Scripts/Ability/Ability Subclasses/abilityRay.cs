@@ -55,7 +55,7 @@ public class abilityRay : Ability {
 			Debug.Log("Cast called for " + this.getName());
 			GameObject newAttack = (GameObject)MonoBehaviour.Instantiate(Resources.Load("Ray_Attack"), Vector3.zero, Quaternion.identity);
 			Ray_Attack script = newAttack.GetComponent<Ray_Attack>();
-			script.init(this);
+			script.init(this, 1.0f);
 		}
 	}
 
