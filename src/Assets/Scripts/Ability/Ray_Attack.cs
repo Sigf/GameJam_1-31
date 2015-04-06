@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Ray_Attack : MonoBehaviour {
 
@@ -12,9 +13,12 @@ public class Ray_Attack : MonoBehaviour {
 	private float start_time = Time.time;
 	private float now;
 
+	private List<Object> ray_body;
+
 	// Use this for initialization
 	void Start () {
 		this.player = GameObject.Find("player_control");
+		ray_body = new List<Object> ();
 	}
 	
 	// Update is called once per frame
@@ -84,25 +88,50 @@ public class Ray_Attack : MonoBehaviour {
 			// display the sprites here
 
 			float ray_width = 0.08f;
-			float impact_width = 0.16f;
+			//float impact_width = 0.16f;
 
 			direction = (hit.point - player_pos);
 
 			int ray_sections = Mathf.CeilToInt(hit.distance / ray_width);
 			Vector2 newPos;
-			Vector3 up = new Vector3(1.0f, 0.0f, 0.0f);
+			float angle;
 
 			Quaternion rotation = Quaternion.identity;
 
 			for(int i = 0; i < ray_sections; i++){
 				newPos = player_pos + ((float)i / ray_sections)*direction;
-				Debug.Log ((float)i / ray_sections);
-				//Debug.Log(direction);
-				//Debug.Log ("Player_pos: " + player_pos + "|| point_pos: " + newPos);
-				rotation = Quaternion.AngleAxis(Vector3.Angle (Vector3.right, direction), Vector3.forward);
-				GameObject.Instantiate(this.ray_sprite, newPos, rotation);
+
+				angle = Vector3.Angle (Vector3.up, direction);
+				// inverting angle if it is more than 180 degrees.
+				if (player_pos.x < mouse_pos.x){
+					angle *= -1.0f;
+				}
+
+				rotation = Quaternion.AngleAxis(angle, Vector3.forward); //still not working right
+
+				Object new_body = GameObject.Instantiate(this.ray_sprite, newPos, rotation);
+				ray_body.Add(new_body);
 			}
+
+			Vector2 impact_pos = player_pos + direction;
+			Object new_impact = GameObject.Instantiate(this.impact_sprite, impact_pos, rotation);
+			ray_body.Add(new_impact);
 
 		}
 	}
+
+	private void clear_ray(){
+		foreach (Object body in ray_body) {
+			Destroy(body);
+		}
+	}
+
+	void OnRenderObject(){
+		this.clear_ray();
+	}
+
+	void OnDestroy(){
+		this.clear_ray();
+	}
+
 }
