@@ -43,6 +43,9 @@ public class abilityRay : Ability {
 		this.lingering = false;
 		this.piercing = false;
 
+		this.cdTimer = 2.0f;
+		this.cdEndTime = 0.0f;
+
 		if (this._debug) {
 			Debug.Log ("Ray Ability instanciated!");
 		}
@@ -50,12 +53,13 @@ public class abilityRay : Ability {
 
 	public override void Cast(Vector3 castPoint)
 	{
-		if(!onCD)
+		if(Time.time >= cdEndTime)
 		{
 			Debug.Log("Cast called for " + this.getName());
 			GameObject newAttack = (GameObject)MonoBehaviour.Instantiate(Resources.Load("Ray_Attack"), Vector3.zero, Quaternion.identity);
 			Ray_Attack script = newAttack.GetComponent<Ray_Attack>();
 			script.init(this, 1.0f);
+			cdEndTime = Time.time + cdTimer;
 		}
 	}
 

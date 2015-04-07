@@ -23,10 +23,10 @@ public class player : MonoBehaviour {
 		this.abilities [0] = new abilityAOE (Ability.Element.Fire);
 		this.abilities [1] = new abilityProjectile (Ability.Element.Dark);
 		this.abilities [2] = new abilityRay (Ability.Element.Fire);
-		//this.abilities [3] = new abilityProjectile (Ability.Element.Electric);
-		//this.abilities [4] = new abilityRay (Ability.Element.Frost);
-		this.abilities [3] = null;
-		this.abilities [4] = null;
+		this.abilities [3] = new abilityProjectile (Ability.Element.Electric);
+		this.abilities [4] = new abilityRay (Ability.Element.Frost);
+		//this.abilities [3] = null;
+		//this.abilities [4] = null;
 
 		this.equiped_ability = abilities [0];
 
