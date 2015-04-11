@@ -135,4 +135,8 @@ public class player : MonoBehaviour {
 	public Ability getCurrentAbility(){
 		return this.equiped_ability;
 	}
+
+	public void setCurrentAbility( int choice){
+		this.equiped_ability = this.abilities [choice];
+	}
 }
