@@ -65,20 +65,20 @@ public class player_input : MonoBehaviour {
 		this.sPressed = Input.GetKey (KeyCode.S);
 		this.dPressed = Input.GetKey (KeyCode.D);
 
-		this.onePressed = Input.GetKeyDown (KeyCode.Alpha1);
-		this.twoPressed = Input.GetKeyDown (KeyCode.Alpha2);
-		this.threePressed = Input.GetKeyDown (KeyCode.Alpha3);
-		this.fourPressed = Input.GetKeyDown (KeyCode.Alpha4);
-		this.fivePressed = Input.GetKeyDown (KeyCode.Alpha5);
+		this.onePressed = Input.GetKey (KeyCode.Alpha1);
+		this.twoPressed = Input.GetKey (KeyCode.Alpha2);
+		this.threePressed = Input.GetKey (KeyCode.Alpha3);
+		this.fourPressed = Input.GetKey (KeyCode.Alpha4);
+		this.fivePressed = Input.GetKey (KeyCode.Alpha5);
 
-		this.f1Pressed = Input.GetKeyDown (KeyCode.F1);
-		this.f2Pressed = Input.GetKeyDown (KeyCode.F2);
-		this.f3Pressed = Input.GetKeyDown (KeyCode.F3);
-		this.f4Pressed = Input.GetKeyDown (KeyCode.F4);
+		this.f1Pressed = Input.GetKey (KeyCode.F1);
+		this.f2Pressed = Input.GetKey (KeyCode.F2);
+		this.f3Pressed = Input.GetKey (KeyCode.F3);
+		this.f4Pressed = Input.GetKey (KeyCode.F4);
 
-		this.atkPressed = Input.GetKeyDown(KeyCode.Mouse0);
+		this.atkPressed = Input.GetKey(KeyCode.Mouse0);
 
-		this.mPressed = Input.GetKeyDown (KeyCode.M);
+		this.mPressed = Input.GetKey (KeyCode.M);
 
 	}
 	void handleMovment(){
