@@ -24,7 +24,7 @@ public class abilityProjectile : Ability {
 	float speed;
 	int speedLevel;
 
-	int projectiles;
+	int numProjectiles;
 	int projectilesLevel;
 
 	bool explosive;
@@ -41,7 +41,7 @@ public class abilityProjectile : Ability {
 		this.damage = damage_array [damageLevel];
 		this.range = range_array [rangeLevel];
 		this.speed = speed_array [speedLevel];
-		this.projectiles = projectiles_array [projectilesLevel];
+		this.numProjectiles = projectiles_array [projectilesLevel];
 
 		this.explosive = false;
 		this.lingering = false;
@@ -128,7 +128,7 @@ public class abilityProjectile : Ability {
 			dna_required = this.nextLevelXp[projectilesLevel];
 			if (dna_given >= dna_required) {
 				projectilesLevel += 1;
-				this.projectiles = projectiles_array [projectilesLevel];
+				this.numProjectiles = projectiles_array [projectilesLevel];
 				return dna_given - dna_required;
 			} 
 		
@@ -150,7 +150,7 @@ public class abilityProjectile : Ability {
 		GUI.Box (new Rect(x, y + cell_height, cell_width, cell_height), "Damage(" + this.damageLevel + "): " + this.damage);
 		GUI.Box (new Rect(x, y + 2*cell_height, cell_width, cell_height), "Range(" + this.rangeLevel + ": " + this.range);
 		GUI.Box (new Rect(x, y + 3*cell_height, cell_width, cell_height), "Speed(" + this.speedLevel + "): " + this.speed);
-		GUI.Box (new Rect(x, y + 4*cell_height, cell_width, cell_height), "Projectiles Count(" + this.projectilesLevel + "): " + this.projectiles);
+		GUI.Box (new Rect(x, y + 4*cell_height, cell_width, cell_height), "Projectiles Count(" + this.projectilesLevel + "): " + this.numProjectiles);
 	}
 
 	public override int getDnaRequired(string type)
@@ -201,7 +201,7 @@ public class abilityProjectile : Ability {
 
 	public int getProjectiles()
 	{
-		return this.projectiles;
+		return this.numProjectiles;
 	}
 	
 	public int getProjectilesLevel()

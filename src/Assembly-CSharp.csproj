@@ -122,6 +122,7 @@
      <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityProjectile.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityRay.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability.cs" />
+     <Compile Include="Assets\Scripts\Ability\Projectile_Attack.cs" />
      <Compile Include="Assets\Scripts\Ability\Ray_Attack.cs" />
      <Compile Include="Assets\Scripts\Ability\abilityEditor.cs" />
      <Compile Include="Assets\Scripts\Ability\abilityPickup.cs" />
