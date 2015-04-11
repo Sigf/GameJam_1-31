@@ -2,20 +2,14 @@
 using System.Collections;
 
 public class player : MonoBehaviour {
-	public inputState _state;
-	private charController2D _controller;
 
 	private Ability[] abilities = new Ability[5];
 	private Ability equiped_ability;
 	private int health;
 	private int dna;
-
-	private bool menu_active = false;
 	
 	// Use this for initialization
 	void Start () {
-		_state = new inputState();
-		_controller = GetComponent<charController2D>();
 
 		this.health = 100;
 		this.dna = 0;
@@ -31,11 +25,9 @@ public class player : MonoBehaviour {
 		this.equiped_ability = abilities [0];
 
 	}
-	
 
 	// Update is called once per frame
 	void Update () {
-
 
 	}
 	
