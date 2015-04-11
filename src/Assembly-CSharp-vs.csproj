@@ -136,6 +136,7 @@
      <Compile Include="Assets\Scripts\Environment\reveal_content.cs" />
      <Compile Include="Assets\Scripts\Input\inputState.cs" />
      <Compile Include="Assets\Scripts\Stats\playerStats.cs" />
+     <Compile Include="Assets\Scripts\Stats\player_stats_UI.cs" />
      <Compile Include="Assets\Trash\charController.cs" />
      <Compile Include="Assets\Trash\charParameters.cs" />
      <Compile Include="Assets\Trash\inputStatetrash.cs" />
