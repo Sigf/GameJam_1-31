@@ -16,7 +16,6 @@ public class charController2D : MonoBehaviour {
 	private Vector2 _normalizedForce;
 	private Vector2 _velocity;
 	private Transform _transform;
-	private inputState _curState;
 	private BoxCollider2D _boxCollider;
 	private Vector2 _rayTopLeft;
 	private Vector2 _rayBottomLeft;
@@ -27,7 +26,6 @@ public class charController2D : MonoBehaviour {
 	{
 		State = new controllerState();
 	
-
 		_stats.curAbility = 1;
 		_stats.loadAbilities();
 		_velocity = _normalizedForce = new Vector2(0.0f, 0.0f);
@@ -46,16 +44,11 @@ public class charController2D : MonoBehaviour {
 	{
 		MoveCalculation ();
 		Move (_velocity * Time.deltaTime);
-
 	}
 
 	public void MoveCalculation()
 	{
-
-		//if(Mathf.Abs (_normalizedForce.x) + Mathf.Abs (_normalizedForce.y) >= 2.0f)
-		//{
-			_normalizedForce /= 2;
-		//}
+		_normalizedForce /= 2;
 
 		_velocity.x = Mathf.Lerp (_velocity.x, _normalizedForce.x * parameters.maxSpeed, parameters.acceleration * Time.deltaTime);
 		_velocity.y = Mathf.Lerp (_velocity.y, _normalizedForce.y * parameters.maxSpeed, parameters.acceleration * Time.deltaTime);
@@ -183,84 +176,10 @@ public class charController2D : MonoBehaviour {
 		}
 	}
 
-	// note used anymore
-	public void passInput(ref inputState state)
-	{
-		_curState = state;
-		processInput ();
-	}
-
 	public void handleSlope()
 	{
 		
-	}
-
-	// not used anymore
-	public void processInput()
-	{
-		_normalizedForce = new Vector2(0.0f, 0.0f);
-
-		if(_curState.aPressed)
-		{
-			_normalizedForce.x -= 1.0f;
-		}
-
-		if(_curState.dPressed)
-		{
-			_normalizedForce.x += 1.0f;
-		}
-
-		if(_curState.wPressed)
-		{
-			_normalizedForce.y += 1.0f;
-		}
-
-		if(_curState.sPressed)
-		{
-			_normalizedForce.y -= 1.0f;
-		}
-
-		if(_curState.onePressed)
-		{
-			_stats.curAbility = 1;
-		}
-
-		if(_curState.twoPressed)
-		{
-			_stats.curAbility = 2;
-		}
-
-		if(_curState.threePressed)
-		{
-			_stats.curAbility = 3;
-		}
-
-		if(_curState.fourPressed)
-		{
-			_stats.curAbility = 4;
-		}
-
-		if(_curState.fivePressed)
-		{
-			_stats.curAbility = 5;
-		}
-
-		if(_curState.atkPressed)
-		{
-
-		}
-
-		_curState.ResetAtkPress();
-		MoveCalculation ();
-		
-	}
-
-	void OnGUI()
-	{
-
-		//GUI.Box(new Rect(100,100,180, 80), "Current Ability: " + _stats.curAbility);
-	
-	}
+	}	
 
 	public void sendToSetAbility(Ability ability){
 		_stats.setAbility (_stats.curAbility, ability);
