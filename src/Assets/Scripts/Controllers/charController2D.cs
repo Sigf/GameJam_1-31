@@ -51,7 +51,6 @@ public class charController2D : MonoBehaviour {
 
 	public void MoveCalculation()
 	{
-		Debug.Log (_normalizedForce);
 
 		//if(Mathf.Abs (_normalizedForce.x) + Mathf.Abs (_normalizedForce.y) >= 2.0f)
 		//{

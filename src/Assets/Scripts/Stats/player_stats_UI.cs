@@ -16,12 +16,6 @@ public class player_stats_UI : MonoBehaviour {
 		playerScript = gameObject.GetComponent<player> ();
 	}
 
-	void Update(){
-		if (Input.GetKeyDown (KeyCode.M)) {
-			this.menu_active = this.menu_active ? false : true;
-		}
-	}
-
 	void OnGUI() {
 
 		player_health = playerScript.getHealth ();
@@ -124,5 +118,9 @@ public class player_stats_UI : MonoBehaviour {
 			}
 			break;
 		}
+	}
+
+	void toggleMenu(){
+		this.menu_active = this.menu_active ? false : true;
 	}
 }

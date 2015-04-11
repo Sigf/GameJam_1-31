@@ -31,23 +31,11 @@ public class player : MonoBehaviour {
 		this.equiped_ability = abilities [0];
 
 	}
-
-	void HandleInput(){
-
-		if(Input.GetKeyDown (KeyCode.Mouse0)){
-			_state.atkPressed = true;
-			if(equiped_ability != null)equiped_ability.Cast(new Vector3(0,0,0));
-			else Debug.Log ("No Skill select, normal attack.");
-		}
-		else if(Input.GetKeyUp (KeyCode.Mouse0)){
-			_state.atkPressed = false;
-		}		
-	}
 	
+
 	// Update is called once per frame
 	void Update () {
-		HandleInput ();
-		//_controller.passInput(ref _state);
+
 
 	}
 	
@@ -77,5 +65,10 @@ public class player : MonoBehaviour {
 
 	public void addDNA(int value){
 		this.dna += value;
+	}
+
+	public void castAbility(){
+		if(equiped_ability != null)equiped_ability.Cast(new Vector3(0,0,0));
+		else Debug.Log ("No Skill select, normal attack.");
 	}
 }
