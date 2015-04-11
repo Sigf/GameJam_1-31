@@ -44,18 +44,19 @@ public class charController2D : MonoBehaviour {
 
 	public void LateUpdate()
 	{
-
+		MoveCalculation ();
 		Move (_velocity * Time.deltaTime);
 
 	}
 
 	public void MoveCalculation()
 	{
+		Debug.Log (_normalizedForce);
 
-		if(Mathf.Abs (_normalizedForce.x) + Mathf.Abs (_normalizedForce.y) >= 2.0f)
-		{
+		//if(Mathf.Abs (_normalizedForce.x) + Mathf.Abs (_normalizedForce.y) >= 2.0f)
+		//{
 			_normalizedForce /= 2;
-		}
+		//}
 
 		_velocity.x = Mathf.Lerp (_velocity.x, _normalizedForce.x * parameters.maxSpeed, parameters.acceleration * Time.deltaTime);
 		_velocity.y = Mathf.Lerp (_velocity.y, _normalizedForce.y * parameters.maxSpeed, parameters.acceleration * Time.deltaTime);
@@ -183,7 +184,7 @@ public class charController2D : MonoBehaviour {
 		}
 	}
 
-
+	// note used anymore
 	public void passInput(ref inputState state)
 	{
 		_curState = state;
@@ -195,6 +196,7 @@ public class charController2D : MonoBehaviour {
 		
 	}
 
+	// not used anymore
 	public void processInput()
 	{
 		_normalizedForce = new Vector2(0.0f, 0.0f);
@@ -266,5 +268,8 @@ public class charController2D : MonoBehaviour {
 		
 	}
 
-
+	public void addForce(Vector2 force){
+		_normalizedForce.x += force.x;
+		_normalizedForce.y += force.y;
+	}
 }

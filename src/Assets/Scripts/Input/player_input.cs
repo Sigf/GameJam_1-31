@@ -60,10 +60,10 @@ public class player_input : MonoBehaviour {
 
 	void checkKeyStates(){
 
-		this.wPressed = Input.GetKeyDown (KeyCode.W);
-		this.aPressed = Input.GetKeyDown (KeyCode.A);
-		this.sPressed = Input.GetKeyDown (KeyCode.S);
-		this.dPressed = Input.GetKeyDown (KeyCode.D);
+		this.wPressed = Input.GetKey (KeyCode.W);
+		this.aPressed = Input.GetKey (KeyCode.A);
+		this.sPressed = Input.GetKey (KeyCode.S);
+		this.dPressed = Input.GetKey (KeyCode.D);
 
 		this.onePressed = Input.GetKeyDown (KeyCode.Alpha1);
 		this.twoPressed = Input.GetKeyDown (KeyCode.Alpha2);
@@ -82,19 +82,27 @@ public class player_input : MonoBehaviour {
 
 	}
 	void handleMovment(){
+
+		float xForce = 1.0f;
+		float yForce = 1.0f;
+
 		if (wPressed) {
+			gameObject.SendMessage("addForce", new Vector2(0.0f, yForce), SendMessageOptions.RequireReceiver);
 			if (debug) Debug.Log("W pressed!");
 		}
 
 		if (aPressed) {
+			gameObject.SendMessage("addForce", new Vector2(-xForce, 0.0f), SendMessageOptions.RequireReceiver);
 			if (debug) Debug.Log("A pressed!");
 		}
 
 		if (sPressed) {
+			gameObject.SendMessage("addForce", new Vector2(0.0f, -yForce), SendMessageOptions.RequireReceiver);
 			if (debug) Debug.Log("S pressed!");
 		}
 
 		if (dPressed) {
+			gameObject.SendMessage("addForce", new Vector2(xForce, 0.0f), SendMessageOptions.RequireReceiver);
 			if (debug) Debug.Log("D pressed!");
 		}
 	}

@@ -96,7 +96,7 @@ public class player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		HandleInput ();
-		_controller.passInput(ref _state);
+		//_controller.passInput(ref _state);
 
 	}
 	
