@@ -65,26 +65,6 @@ public class player : MonoBehaviour {
 		{
 			_state.aPressed = false;
 		}
-		if(Input.GetKeyDown (KeyCode.Alpha1)){
-			_state.onePressed = true;
-			equiped_ability = abilities[0];
-		}
-		else if(Input.GetKeyDown (KeyCode.Alpha2)){
-			_state.twoPressed = true;
-			equiped_ability = abilities[1];
-		}
-		else if(Input.GetKeyDown (KeyCode.Alpha3)){
-			_state.threePressed = true;
-			equiped_ability = abilities[2];
-		}
-		else if(Input.GetKeyDown (KeyCode.Alpha4)){
-			_state.fourPressed = true;
-			equiped_ability = abilities[3];
-		}
-		else if(Input.GetKeyDown (KeyCode.Alpha5)){
-			_state.fivePressed = true;
-			equiped_ability = abilities[4];
-		}
 		if(Input.GetKeyDown (KeyCode.Mouse0)){
 			_state.atkPressed = true;
 			if(equiped_ability != null)equiped_ability.Cast(new Vector3(0,0,0));
