@@ -41,25 +41,7 @@ public class player : MonoBehaviour {
 		}
 		else if(Input.GetKeyUp (KeyCode.Mouse0)){
 			_state.atkPressed = false;
-		}
-
-		// debug key strokes
-		if (Input.GetKeyDown (KeyCode.F1)) {
-			this.health -= 5;
-		}
-
-		if (Input.GetKeyDown (KeyCode.F2)) {
-			this.health += 5;
-		}
-
-		if (Input.GetKeyDown (KeyCode.F3)) {
-			this.dna -= 5;
-		}
-
-		if (Input.GetKeyDown (KeyCode.F4)) {
-			this.dna += 5;
-		}
-		
+		}		
 	}
 	
 	// Update is called once per frame
@@ -87,5 +69,13 @@ public class player : MonoBehaviour {
 
 	public void setCurrentAbility( int choice){
 		this.equiped_ability = this.abilities [choice];
+	}
+
+	public void addHealth(int value){
+		this.health += value;
+	}
+
+	public void addDNA(int value){
+		this.dna += value;
 	}
 }

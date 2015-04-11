@@ -109,18 +109,22 @@ public class player_input : MonoBehaviour {
 
 	void handleFKeys(){
 		if (f1Pressed) {
+			gameObject.SendMessage("addHealth", -10, SendMessageOptions.RequireReceiver);
 			if (debug) Debug.Log("F1 pressed!");
 		}
 
 		if (f2Pressed) {
+			gameObject.SendMessage("addHealth", 10, SendMessageOptions.RequireReceiver);
 			if (debug) Debug.Log("F2 pressed!");
 		}
 
 		if (f3Pressed) {
+			gameObject.SendMessage("addNDA", -20, SendMessageOptions.RequireReceiver);
 			if (debug) Debug.Log("F3 pressed!");
 		}
 
 		if (f4Pressed) {
+			gameObject.SendMessage("addDNA", 20, SendMessageOptions.RequireReceiver);
 			if (debug) Debug.Log("F4 pressed!");
 		}
 	}
