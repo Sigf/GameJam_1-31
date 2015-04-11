@@ -33,38 +33,7 @@ public class player : MonoBehaviour {
 	}
 
 	void HandleInput(){
-		if(Input.GetKeyDown(KeyCode.W))
-		{
-			_state.wPressed = true;
-		}
-		else if(Input.GetKeyUp (KeyCode.W))
-		{
-			_state.wPressed = false;
-		}
-		if(Input.GetKeyDown (KeyCode.S))
-		{
-			_state.sPressed = true;
-		}
-		else if(Input.GetKeyUp (KeyCode.S))
-		{
-			_state.sPressed = false;
-		}
-		if(Input.GetKeyDown (KeyCode.D))
-		{
-			_state.dPressed = true;
-		}
-		else if(Input.GetKeyUp (KeyCode.D))
-		{
-			_state.dPressed = false;
-		}
-		if(Input.GetKeyDown (KeyCode.A))
-		{
-			_state.aPressed = true;
-		}
-		else if(Input.GetKeyUp (KeyCode.A))
-		{
-			_state.aPressed = false;
-		}
+
 		if(Input.GetKeyDown (KeyCode.Mouse0)){
 			_state.atkPressed = true;
 			if(equiped_ability != null)equiped_ability.Cast(new Vector3(0,0,0));
