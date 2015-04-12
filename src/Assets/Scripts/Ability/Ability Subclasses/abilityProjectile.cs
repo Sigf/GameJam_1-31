@@ -52,7 +52,7 @@ public class abilityProjectile : Ability {
 			Debug.Log ("Projectile Ability instanciated!");
 		}
 	}
-
+	 
 	public void Start()
 	{
 
