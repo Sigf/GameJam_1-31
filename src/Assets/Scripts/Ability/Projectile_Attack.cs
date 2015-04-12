@@ -4,6 +4,9 @@ using System.Collections;
 public class Projectile_Attack : MonoBehaviour {
 	public Ability ability;
 	private GameObject player;
+	private Vector2 startPos;
+	private float speed;
+	private float range;
 	
 	public SpriteRenderer projectile;
 	GameObject temp;
@@ -14,15 +17,29 @@ public class Projectile_Attack : MonoBehaviour {
 		this.player = GameObject.Find("player_control");
 		transform.rotation = player.transform.GetChild(0).transform.GetChild(0).transform.rotation;
 		projectile = gameObject.GetComponent <SpriteRenderer>();
-
+		startPos = transform.position;
 	}
 
 	void Update () {
 		if (ability == null)return;
+		Debug.Log (range);
+		if(Mathf.Abs (Vector2.Distance(startPos, transform.position)) >= range){
+			Destroy (gameObject);
+		}
+		transform.Translate (Vector3.up * speed * Time.deltaTime, Space.Self);
+
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.gameObject.tag.Equals ("Obstacles")){
+			Destroy (gameObject);
+		}
 	}
 
 	public void init(Ability ability)
 	{
+		speed = ((abilityProjectile)ability).getSpeed ();
+		range = ((abilityProjectile)ability).getRange ();
 		Debug.Log ("call init");
 		this.ability = ability;
 
