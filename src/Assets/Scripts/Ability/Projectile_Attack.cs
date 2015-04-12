@@ -13,16 +13,14 @@ public class Projectile_Attack : MonoBehaviour {
 
 	
 	void Awake () {
-		Debug.Log ("Call start");
 		this.player = GameObject.Find("player_control");
 		transform.rotation = player.transform.GetChild(0).transform.GetChild(0).transform.rotation;
 		projectile = gameObject.GetComponent <SpriteRenderer>();
-		startPos = transform.position;
+
 	}
 
 	void Update () {
 		if (ability == null)return;
-		Debug.Log (range);
 		if(Mathf.Abs (Vector2.Distance(startPos, transform.position)) >= range){
 			Destroy (gameObject);
 		}
@@ -38,9 +36,10 @@ public class Projectile_Attack : MonoBehaviour {
 
 	public void init(Ability ability)
 	{
+		startPos = transform.position;
 		speed = ((abilityProjectile)ability).getSpeed ();
 		range = ((abilityProjectile)ability).getRange ();
-		Debug.Log ("call init");
+
 		this.ability = ability;
 
 		string element = ability.getElementString();

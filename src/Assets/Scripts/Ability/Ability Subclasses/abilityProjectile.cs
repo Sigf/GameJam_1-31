@@ -62,13 +62,18 @@ public class abilityProjectile : Ability {
 	{
 		if(Time.time >= cdEndTime)
 		{
+
 			Debug.Log("Cast called for " + this.getName());
-			GameObject newInstance = MonoBehaviour.Instantiate (Resources.Load ("Projectile_Attack"), castPoint, Quaternion.identity) as GameObject;
-			newInstance.transform.position += newInstance.transform.up * (newInstance.GetComponent<BoxCollider2D>().size.y/2);
-			//TODO: Send message of type abilityProjectile to a setter function within the projectile
-			Projectile_Attack script = newInstance.GetComponent<Projectile_Attack>();
-			script.init(this);
+			float startPoint = 0.19f/(numProjectiles + 1);
+			GameObject projectileObj = (GameObject)Resources.Load("Projectile_Attack");
+			for(int i = 1; i <= numProjectiles; i++){
+				GameObject newInstance = MonoBehaviour.Instantiate (projectileObj, castPoint, Quaternion.identity) as GameObject;
+				newInstance.transform.position += newInstance.transform.right * (i * startPoint);
+				Projectile_Attack script = newInstance.GetComponent<Projectile_Attack>();
+				script.init(this);
+			}
 			cdEndTime = Time.time + cdTimer;
+
 		}
 	}
 
