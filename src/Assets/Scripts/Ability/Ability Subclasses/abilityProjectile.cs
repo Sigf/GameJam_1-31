@@ -11,11 +11,10 @@ using System.Collections;
  */
 
 public class abilityProjectile : Ability {
-	GameObject projectile;
 
 	float[] damage_array = new float[5]{2.0f, 5.0f, 8.0f, 15.0f, 30.0f};
 	float[] speed_array = new float[5]{1.0f, 1.5f, 2.0f, 2.5f, 3.0f};
-	float[] range_array = new float[5]{5.0f, 10.0f, 15.0f, 20.0f, 25.0f};
+	float[] range_array = new float[5]{0.5f, 1.0f, 2.0f, 4.0f, 8.0f};
 	int[] projectiles_array = new int[5]{1, 2, 3, 4, 5};
 
 	float range;
@@ -46,11 +45,14 @@ public class abilityProjectile : Ability {
 		this.explosive = false;
 		this.lingering = false;
 
+		this.cdTimer = 1.0f;
+		this.cdEndTime = 0.0f;
+
 		if (this._debug) {
 			Debug.Log ("Projectile Ability instanciated!");
 		}
 	}
-
+	 
 	public void Start()
 	{
 
@@ -58,27 +60,20 @@ public class abilityProjectile : Ability {
 
 	public override void Cast(Vector3 castPoint)
 	{
-		if(!onCD)
+		if(Time.time >= cdEndTime)
 		{
+
 			Debug.Log("Cast called for " + this.getName());
-			/*if(projectiles == 1){
-				GameObject newInstace = MonoBehaviour.Instantiate (projectile, castPoint, Quaternion.identity) as GameObject;
-				//TODO: Send message of type abilityProjectile to a setter function within the projectile
-
-
-				cdEndTime = Time.time + cdTimer;
-				onCD = true;
+			float startPoint = 0.19f/(numProjectiles + 1);
+			GameObject projectileObj = (GameObject)Resources.Load("Projectile_Attack");
+			for(int i = 1; i <= numProjectiles; i++){
+				GameObject newInstance = MonoBehaviour.Instantiate (projectileObj, castPoint, Quaternion.identity) as GameObject;
+				newInstance.transform.position += newInstance.transform.right * (i * startPoint);
+				Projectile_Attack script = newInstance.GetComponent<Projectile_Attack>();
+				script.init(this);
 			}
-			else
-			{
-				/*TODO: Need to get the boxcollider width and evenly distribute the projectiles in front of the players
-				 * unless we want to have more interesting shapes.  I think perhaps allowing the player to choose the angles
-				 * before a challenge could add another level of depth to the strategy
-				 * May be a bit more difficult to implement, but not by much.  Could essentially just have an array of bools for each possible castposition from say, 1-8, that each cast would iterate through
-				 * or maybe just labeling the positions 1-8, and then having an array of castPoint would be good, so it essentially just iterates through each and passes them the info they need 
-				 * We could even incorporate both, perhaps have a dropdown option that lets them choose if the projectiles are unidirectional or not
-				 */
-			//}
+			cdEndTime = Time.time + cdTimer;
+
 		}
 	}
 

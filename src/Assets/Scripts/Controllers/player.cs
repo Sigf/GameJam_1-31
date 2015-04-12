@@ -60,7 +60,8 @@ public class player : MonoBehaviour {
 	}
 
 	public void castAbility(){
-		if(equiped_ability != null)equiped_ability.Cast(new Vector3(0,0,0));
+		if(equiped_ability != null)equiped_ability.Cast(transform.position + (transform.GetChild(0).transform.GetChild(0).transform.up * (transform.GetComponent<BoxCollider2D>().size.y/2)) - (transform.GetChild (0).transform.GetChild(0).transform.right * 0.095f));
+		
 		else Debug.Log ("No Skill select, normal attack.");
 	}
 }
