@@ -1,41 +1,24 @@
 ﻿<Properties>
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Input\player_input.cs">
-    <Files>
-=======
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Input\player_input.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Ability\Ray_Attack.cs">
     <Files>
-      <File FileName="Assets\Scripts\Controllers\charController2D.cs" Line="51" Column="25" />
-      <File FileName="Assets\Editor\room_maker.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ability\Ray_Attack.cs" Line="73" Column="10" />
->>>>>>> origin/master
-      <File FileName="Assets\Scripts\Ability\Ability Subclasses\abilityRay.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ability\Ability Subclasses\abilityRay.cs" Line="99" Column="17" />
       <File FileName="Assets\Scripts\Ability\Ability.cs" Line="1" Column="1" />
       <File FileName="Assets\Editor\asset_import.cs" Line="1" Column="1" />
       <File FileName="Assets\Editor\room_maker.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ability\Ray_Attack.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ability\Ability Subclasses\abilityProjectile.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ability\Ray_Attack.cs" Line="17" Column="32" />
+      <File FileName="Assets\Scripts\Ability\Ability Subclasses\abilityProjectile.cs" Line="222" Column="1" />
       <File FileName="Assets\Scripts\Ability\Ability Subclasses\abilityAOE.cs" Line="1" Column="1" />
-<<<<<<< HEAD
       <File FileName="Assets\Scripts\Controllers\charController2D.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Animation\player_attack.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Controllers\player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Stats\player_stats_UI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Stats\player_stats_UI.cs" Line="1" Column="18" />
       <File FileName="Assets\Scripts\Input\inputState.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Input\player_input.cs" Line="4" Column="42" />
+      <File FileName="Assets\Scripts\Input\player_input.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Controllers\charControllerParameters.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Stats\playerStats.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Controllers\controllerState.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Controllers\follow_mouse.cs" Line="1" Column="1" />
-=======
-      <File FileName="Assets\Scripts\Ability\Ability.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Animation\player_attack.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Controllers\player.cs" Line="62" Column="28" />
-      <File FileName="Assets\Editor\asset_import.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Input\player_input.cs" Line="134" Column="4" />
->>>>>>> origin/master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
