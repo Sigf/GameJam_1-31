@@ -60,7 +60,14 @@ public class player : MonoBehaviour {
 	}
 
 	public void castAbility(){
-		if(equiped_ability != null)equiped_ability.Cast(transform.position + (transform.GetChild(0).transform.GetChild(0).transform.up * (transform.GetComponent<BoxCollider2D>().size.y/2)) - (transform.GetChild (0).transform.GetChild(0).transform.right * 0.095f));
+		if(equiped_ability != null){
+			if(equiped_ability.getType () == Ability.AttackType._Projectile){
+			equiped_ability.Cast(transform.position + (transform.GetChild(0).transform.GetChild(0).transform.up * (transform.GetComponent<BoxCollider2D>().size.y/2)) - (transform.GetChild (0).transform.GetChild(0).transform.right * 0.095f));
+			}
+			else{
+				equiped_ability.Cast (transform.position);
+			}
+		}
 		
 		else Debug.Log ("No Skill select, normal attack.");
 	}

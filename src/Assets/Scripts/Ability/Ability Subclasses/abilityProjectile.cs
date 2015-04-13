@@ -67,10 +67,10 @@ public class abilityProjectile : Ability {
 			float startPoint = 0.19f/(numProjectiles + 1);
 			GameObject projectileObj = (GameObject)Resources.Load("Projectile_Attack");
 			for(int i = 1; i <= numProjectiles; i++){
-				GameObject newInstance = MonoBehaviour.Instantiate (projectileObj, castPoint, Quaternion.identity) as GameObject;
-				newInstance.transform.position += newInstance.transform.right * (i * startPoint);
-				Projectile_Attack script = newInstance.GetComponent<Projectile_Attack>();
-				script.init(this);
+			GameObject newInstance = MonoBehaviour.Instantiate (projectileObj, castPoint, Quaternion.identity) as GameObject;
+			newInstance.transform.position += newInstance.transform.right * (i * startPoint);
+			Projectile_Attack script = newInstance.GetComponent<Projectile_Attack>();
+			script.init(this);
 			}
 			cdEndTime = Time.time + cdTimer;
 

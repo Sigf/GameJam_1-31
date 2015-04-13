@@ -120,6 +120,7 @@
      <Compile Include="Assets\Scripts\AI\AstarAI.cs" />
      <Compile Include="Assets\Scripts\AI\definePath.cs" />
      <Compile Include="Assets\Scripts\AI\followPath.cs" />
+     <Compile Include="Assets\Scripts\Ability\AOE_Attack.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityAOE.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityProjectile.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityRay.cs" />

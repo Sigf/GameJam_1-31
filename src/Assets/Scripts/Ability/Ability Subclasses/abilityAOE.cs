@@ -12,7 +12,7 @@ using System.Collections;
 public class abilityAOE : Ability {
 
 	float[] damage_array = new float[5]{0.5f, 1.5f, 4.0f, 9.0f, 18.0f};
-	float[] radius_array = new float[5]{1.0f, 1.5f, 2.0f, 2.5f, 3.0f};
+	float[] radius_array = new float[5]{0.4f, 0.6f, 0.8f, 1.0f, 1.2f};
 	float[] duration_array = new float[5]{1.0f, 1.5f, 2.0f, 2.5f, 3.0f};
 
 	float radius;
@@ -43,9 +43,14 @@ public class abilityAOE : Ability {
 
 	public override void Cast(Vector3 castPoint)
 	{
-		if(!onCD)
+		if(Time.time >= cdEndTime)
 		{
+			GameObject newInstance = MonoBehaviour.Instantiate (Resources.Load ("AOE_Attack"), castPoint, Quaternion.identity) as GameObject;
+			AOE_Attack script = newInstance.GetComponent<AOE_Attack>();
+            script.init(this);
 			Debug.Log("Cast called for " + this.getName());
+
+			cdEndTime = Time.time + cdTimer;
 		}
 	}
 
