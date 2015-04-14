@@ -26,16 +26,15 @@ public class asset_import : EditorWindow {
 			assetPath = EditorUtility.OpenFilePanel("Asset", "", "png");
 		}
 
-		if (assetPath != "") {
-			importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
-			importer.mipmapEnabled = true;
-			importer.isReadable = true;
-			importer.maxTextureSize = 32;
-			importer.filterMode = FilterMode.Point;
-		}
-
-
 		if (GUILayout.Button ("Test")) {
+			if (assetPath != "") {
+				importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+				importer.mipmapEnabled = true;
+				importer.isReadable = true;
+				importer.maxTextureSize = 32;
+				importer.filterMode = FilterMode.Point;
+			}
+
 			Debug.Log (assetPath);
 		}
 	}

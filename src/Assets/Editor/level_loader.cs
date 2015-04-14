@@ -40,7 +40,6 @@ public class level_loader : EditorWindow {
 	}
 
 	private bool load(string file){
-		Debug.Log ("Now loading " + file);
 		StreamReader reader = new StreamReader (file, Encoding.Default);
 
 		GameObject root = new GameObject(room_name);
@@ -79,7 +78,6 @@ public class level_loader : EditorWindow {
 
 			root.transform.localScale = new Vector3(1.0f, -1.0f, 1.0f);
 		}
-
 
 		return true;
 	}
