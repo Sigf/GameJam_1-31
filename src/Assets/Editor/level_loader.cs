@@ -8,6 +8,7 @@ public class level_loader : EditorWindow {
 
 
 	private string filePath = "";
+	private string room_name;
 
 	private GameObject floor;
 	private GameObject wall;
@@ -32,6 +33,7 @@ public class level_loader : EditorWindow {
 			}
 		}
 
+		room_name = EditorGUILayout.TextField ("Name:", room_name);
 		floor = (GameObject)EditorGUILayout.ObjectField ("Floor:", floor, typeof(GameObject), false);
 		wall = (GameObject)EditorGUILayout.ObjectField ("Wall:", wall, typeof(GameObject), false);
 		corner = (GameObject)EditorGUILayout.ObjectField ("Corner:", corner, typeof(GameObject), false);
@@ -41,7 +43,7 @@ public class level_loader : EditorWindow {
 		Debug.Log ("Now loading " + file);
 		StreamReader reader = new StreamReader (file, Encoding.Default);
 
-		GameObject root = new GameObject("test_room");
+		GameObject root = new GameObject(room_name);
 		GameObject tile;
 
 		using (reader) {
