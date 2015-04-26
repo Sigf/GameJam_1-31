@@ -3,6 +3,24 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
+public class charAnimationData {
+	public Sprite[][] animationList = new Sprite[10][];
+	public int[] numFrames = new int[10];
+	public string[] description = new string[10]
+	{
+		"Spawn Animation",
+		"Idle Animation",
+		"Walk Animation",
+		"Take Damage Animation",
+		"Ray Atk Animation",
+		"Projectile Atk Animation",
+		"AOE Atk Animation",
+		"Victory Animation",
+		"Defeat Animation",
+		"Death Animation"
+	};
+}
+
 public class asset_import : EditorWindow {
 
 	private int selectedType = 0;
@@ -13,6 +31,7 @@ public class asset_import : EditorWindow {
 	private string objectName = "";
 	private string[] types = new string[]{"Floor", "Wall", "Door", "Obstacle", "Enemy", "Playable Character"};
 
+	private charAnimationData data = new charAnimationData();
 	private Sprite singleSprite;
 	private Sprite[] animation;
 
@@ -161,6 +180,18 @@ public class asset_import : EditorWindow {
 
 	private void DisplayPlayableOptions(){
 		objectName = EditorGUILayout.TextField("Name", objectName);
+
+		for(int i = 0; i < data.numFrames.Length; i++){
+
+			data.numFrames[i] = EditorGUILayout.IntField(data.description[i], data.numFrames[i]);
+			data.animationList[i] = new Sprite[data.numFrames[i]];
+			for(int j = 0; j < data.numFrames[i]; j++){
+				data.animationList[i][j] = (Sprite)EditorGUILayout.ObjectField("Frame " + (j + 1), data.animationList[i][j], typeof(Sprite), false);
+			}
+		}
+
+
+
 	}
     
     private void CreateFloorPrefab(){
