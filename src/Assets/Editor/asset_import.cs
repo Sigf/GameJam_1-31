@@ -182,7 +182,6 @@ public class asset_import : EditorWindow {
 		objectName = EditorGUILayout.TextField("Name", objectName);
 
 		for(int i = 0; i < data.numFrames.Length; i++){
-
 			data.numFrames[i] = EditorGUILayout.IntField(data.description[i] + " Frames", data.numFrames[i]);
 			if(data.animationList[i] == null || data.animationList[i].Length != data.numFrames[i]){
 				data.animationList[i] = new Sprite[data.numFrames[i]];
@@ -191,9 +190,6 @@ public class asset_import : EditorWindow {
 				data.animationList[i][j] = (Sprite)EditorGUILayout.ObjectField("Frame " + (j + 1), data.animationList[i][j], typeof(Sprite), false);
 			}
 		}
-
-
-
 	}
     
     private void CreateFloorPrefab(){
