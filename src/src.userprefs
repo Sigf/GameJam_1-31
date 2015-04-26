@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Editor\asset_import.cs">
     <Files>
-      <File FileName="Assets\Editor\asset_import.cs" Line="103" Column="108" />
+      <File FileName="Assets\Editor\asset_import.cs" Line="107" Column="38" />
       <File FileName="..\..\RGB\RGB\RGB\Assets\Scripts\Player\charController2d.cs" Line="28" Column="47" />
       <File FileName="..\..\RGB\RGB\RGB\Assets\Scripts\Player\controllerParameters2d.cs" Line="16" Column="1" />
       <File FileName="Assets\Editor\level_loader.cs" Line="179" Column="1" />

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
@@ -13,7 +14,7 @@ public class asset_import : EditorWindow {
 
 	private int selectedType = 0;
 	private bool tileSet = false;
-	private bool destructable = false;
+	private bool destructible = false;
 	private int framesOfDestruction;
 	private string name;
 	private string[] types = new string[]{"Floor", "Wall", "Door", "Obstacle", "Enemy", "Playable Character"};
@@ -86,21 +87,18 @@ public class asset_import : EditorWindow {
 	private void DisplayWallOptions(){
 		name = EditorGUILayout.TextField("Name", name);
 		singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
-		destructable = EditorGUILayout.Toggle("Destructable?", destructable);
+		destructible = EditorGUILayout.Toggle("Destructible?", destructible);
 
 
-		if(destructable){
+		if(destructible){
 			framesOfDestruction = EditorGUILayout.IntField("How Many Frames?", framesOfDestruction);
-			if(framesOfDestruction > 0 && animation.Length != framesOfDestruction){
+			if(framesOfDestruction > 0 && (animation == null || animation.Length != framesOfDestruction)){
 				animation = new Sprite[framesOfDestruction];
 			}
 			for(int i = 0; i < framesOfDestruction; i++){
 				animation[i] = (Sprite)EditorGUILayout.ObjectField("Level " + (i + 1), animation[i], typeof(Sprite), false);
-				if(animation[i] != null){
-					Debug.Log (animation[i].name);
-				}
-
             }
+
         }
     }
     
@@ -116,10 +114,10 @@ public class asset_import : EditorWindow {
     }
     private void CreateWallPrefab(){
 		Object newPrefab;
-		if(destructable && framesOfDestruction > 0){
-			string guid = AssetDatabase.CreateFolder("Assets/Prefabs/Level/Wall Tiles/Destructable", name);
+		if(destructible && framesOfDestruction > 0){
+			string guid = AssetDatabase.CreateFolder("Assets/Prefabs/Level/Wall Tiles/Destructible", name);
 			string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructable/" + name + "/" + name + ".prefab");
+			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructible/" + name + "/" + name + ".prefab");
 			GameObject newObject = new GameObject();
 			SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 			sr.sprite = singleSprite;
@@ -127,7 +125,7 @@ public class asset_import : EditorWindow {
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
             DestroyImmediate (newObject);
 			for(int i = 0; i < framesOfDestruction; i++){
-				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructable/" + name + "/" + name + (i+1) + ".prefab");
+				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructible/" + name + "/" + name + (i+1) + ".prefab");
 				newObject = new GameObject();
 				sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 				sr.sprite = animation[i];
@@ -135,6 +133,7 @@ public class asset_import : EditorWindow {
 				PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
                 DestroyImmediate (newObject);
             }
+			System.Array.Clear (animation, 0, framesOfDestruction);
 		}
 
 		else{
