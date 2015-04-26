@@ -203,6 +203,8 @@ public class asset_import : EditorWindow {
 			for(int i = 0; i < numFrames; i++){
 				dbb.destructionSprites[i] = animation[i];
 			}
+			newObject.layer = 8;
+			newObject.tag = "Obstacles";
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
             DestroyImmediate (newObject);
 
@@ -216,6 +218,8 @@ public class asset_import : EditorWindow {
 			sr.sprite = singleSprite;
 			BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
 			bc.size = singleSprite.bounds.size;
+			newObject.layer = 8;
+			newObject.tag = "Obstacles";
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
             DestroyImmediate (newObject);
 		}
