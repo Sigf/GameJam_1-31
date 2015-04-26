@@ -62,14 +62,26 @@ public class asset_import : EditorWindow {
 			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
 		}
 
-		if (GUILayout.Button ("Test")) {
-			if (assetPath != "") {
-				importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
-				importer.mipmapEnabled = true;
-				importer.isReadable = true;
-				importer.maxTextureSize = 32;
-				importer.filterMode = FilterMode.Point;
+		if (GUILayout.Button ("Import")) {
+			if(selectedType == 0){
+
 			}
+			if(selectedType == 1){
+                
+            }
+			if(selectedType == 2){
+                
+            }
+			if(selectedType == 3){
+                
+            }
+			if(selectedType == 4){
+                
+            }
+			if(selectedType == 5){
+                
+            }
+
 
 			Debug.Log (assetPath);
 		}
