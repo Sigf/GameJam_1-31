@@ -32,6 +32,9 @@ public class Projectile_Attack : MonoBehaviour {
 		if(other.gameObject.tag.Equals ("Obstacles")){
 			Destroy (gameObject);
 		}
+		if(other.gameObject.tag.Equals ("Enemy")){
+			other.gameObject.SendMessage("ProcessHit", ability);
+		}
 	}
 
 	public void init(Ability ability)
