@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Controllers\charController2D.cs" />
      <Compile Include="Assets\Scripts\Controllers\charControllerParameters.cs" />
      <Compile Include="Assets\Scripts\Controllers\controllerState.cs" />
+     <Compile Include="Assets\Scripts\Controllers\enemy.cs" />
      <Compile Include="Assets\Scripts\Controllers\follow_mouse.cs" />
      <Compile Include="Assets\Scripts\Controllers\player.cs" />
      <Compile Include="Assets\Scripts\Controllers\player_pickup.cs" />
