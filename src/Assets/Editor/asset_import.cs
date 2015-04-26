@@ -164,14 +164,17 @@ public class asset_import : EditorWindow {
 	private void CreateDoorPrefab(){
 		string guid = AssetDatabase.CreateFolder("Assets/Prefabs/Level/Doors", name);
 		string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + " Closed" + ".prefab");
+		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + ".prefab");
 		GameObject newObject = new GameObject();
 		SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 		sr.sprite = singleSprite;
 		BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+		door_behavior db = newObject.AddComponent<door_behavior>() as door_behavior;
+		db.open_spr = singleSprite;
+		db.close_spr = animation[numFrames - 1];
 		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 		DestroyImmediate (newObject);
-		for(int i = 0; i < numFrames; i++){
+		/*for(int i = 0; i < numFrames; i++){
 			if(i == numFrames - 1){
 				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + " Open" + ".prefab");
 			}
@@ -185,6 +188,7 @@ public class asset_import : EditorWindow {
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 			DestroyImmediate (newObject);
 		}
+		*/
 		System.Array.Clear (animation, 0, numFrames);
 
 		this.Close();
