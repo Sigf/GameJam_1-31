@@ -17,7 +17,7 @@ public class asset_import : EditorWindow {
 	private bool destructible = false;
 	private int hp;
 	private int numFrames;
-	private string objectName;
+	private string objectName = "";
 	private string[] types = new string[]{"Floor", "Wall", "Door", "Obstacle", "Enemy", "Playable Character"};
 	private string assetPath;
 	private Texture2D assetTexture;
@@ -58,13 +58,37 @@ public class asset_import : EditorWindow {
 
 		if (GUILayout.Button ("Import")) {
 			if(selectedType == 0){
-				CreateFloorPrefab();
+				if(objectName == ""){
+					Debug.LogError ("Please enter a valid name");
+				}
+				else if(singleSprite == null){
+					Debug.LogError("Please assign a sprite");
+				}
+				else{
+					CreateFloorPrefab();
+				}
 			}
 			if(selectedType == 1){
-				CreateWallPrefab ();
+				if(objectName == ""){
+					Debug.LogError ("Please enter a valid name");
+				}
+				else if(singleSprite == null){
+					Debug.LogError("Please assign a sprite");
+				}
+				else{
+					CreateWallPrefab();
+				}
             }
 			if(selectedType == 2){
-				CreateDoorPrefab();
+				if(objectName == ""){
+					Debug.LogError ("Please enter a valid name");
+				}
+				else if(singleSprite == null){
+					Debug.LogError("Please assign a sprite");
+				}
+				else{
+					CreateDoorPrefab();
+				}
             }
 			if(selectedType == 3){
                 
