@@ -134,17 +134,14 @@ public class asset_import : EditorWindow {
 			SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 			sr.sprite = singleSprite;
 			BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+			destructible_block_behavior dbb = newObject.AddComponent<destructible_block_behavior>() as destructible_block_behavior;
+			dbb.destructionSprites = new Sprite[numFrames];
+			for(int i = 0; i < numFrames; i++){
+				dbb.destructionSprites[i] = animation[i];
+			}
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
             DestroyImmediate (newObject);
-			for(int i = 0; i < numFrames; i++){
-				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructible/" + name + "/" + name + (i+1) + ".prefab");
-				newObject = new GameObject();
-				sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
-				sr.sprite = animation[i];
-				bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
-				PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
-                DestroyImmediate (newObject);
-            }
+
 			System.Array.Clear (animation, 0, numFrames);
 		}
 
