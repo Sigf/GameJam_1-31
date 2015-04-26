@@ -13,10 +13,11 @@ using System.Collections;
 public class asset_import : EditorWindow {
 
 	private int selectedType = 0;
-	private bool tileSet = false;
+	//private bool tileSet = false;
 	private bool destructible = false;
+	private int hp;
 	private int numFrames;
-	private string name;
+	private string objectName;
 	private string[] types = new string[]{"Floor", "Wall", "Door", "Obstacle", "Enemy", "Playable Character"};
 	private string assetPath;
 	private Texture2D assetTexture;
@@ -80,17 +81,18 @@ public class asset_import : EditorWindow {
 	}
 
 	private void DisplayFloorOptions(){
+		objectName = EditorGUILayout.TextField("Name", objectName);
 		singleSprite = (Sprite)EditorGUILayout.ObjectField("Floor Sprite", singleSprite, typeof(Sprite), false);
-		name = EditorGUILayout.TextField("Name", name);
 	}
 
 	private void DisplayWallOptions(){
-		name = EditorGUILayout.TextField("Name", name);
+		objectName = EditorGUILayout.TextField("Name", objectName);
 		singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
 		destructible = EditorGUILayout.Toggle("Destructible?", destructible);
 
 
 		if(destructible){
+			hp = EditorGUILayout.IntField("Total HP", hp);
 			numFrames = EditorGUILayout.IntField("How Many Frames?", numFrames);
 			if(numFrames > 0 && (animation == null || animation.Length != numFrames)){
 				animation = new Sprite[numFrames];
@@ -103,7 +105,7 @@ public class asset_import : EditorWindow {
     }
 
 	private void DisplayDoorOptions(){
-		name = EditorGUILayout.TextField("Name", name);
+		objectName = EditorGUILayout.TextField("Name", objectName);
 		singleSprite = (Sprite)EditorGUILayout.ObjectField("Closed Door", singleSprite, typeof(Sprite), false);
 		numFrames = EditorGUILayout.IntField("How Many Frames?", numFrames);
 		if(numFrames > 0 && (animation == null || animation.Length != numFrames)){
@@ -115,11 +117,13 @@ public class asset_import : EditorWindow {
 	}
     
     private void CreateFloorPrefab(){
-		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Floor Tiles/" + name + ".prefab");
+		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Floor Tiles/" + objectName + ".prefab");
 		GameObject newObject = new GameObject();
 		SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 		sr.sprite = singleSprite;
 		BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+
+		bc.size = singleSprite.bounds.size;
 		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 		DestroyImmediate (newObject);
         this.Close();
@@ -127,15 +131,16 @@ public class asset_import : EditorWindow {
     private void CreateWallPrefab(){
 		Object newPrefab;
 		if(destructible && numFrames > 0){
-			string guid = AssetDatabase.CreateFolder("Assets/Prefabs/Level/Wall Tiles/Destructible", name);
-			string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructible/" + name + "/" + name + ".prefab");
+			AssetDatabase.CreateFolder("Assets/Prefabs/Level/Wall Tiles/Destructible", objectName);
+			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructible/" + objectName + "/" + objectName + ".prefab");
 			GameObject newObject = new GameObject();
 			SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 			sr.sprite = singleSprite;
 			BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+			bc.size = singleSprite.bounds.size;
 			destructible_block_behavior dbb = newObject.AddComponent<destructible_block_behavior>() as destructible_block_behavior;
 			dbb.destructionSprites = new Sprite[numFrames];
+			dbb.totalHealth = hp;
 			for(int i = 0; i < numFrames; i++){
 				dbb.destructionSprites[i] = animation[i];
 			}
@@ -146,11 +151,12 @@ public class asset_import : EditorWindow {
 		}
 
 		else{
-			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/" + name + ".prefab");
+			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/" + objectName + ".prefab");
 			GameObject newObject = new GameObject();
 			SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 			sr.sprite = singleSprite;
 			BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+			bc.size = singleSprite.bounds.size;
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
             DestroyImmediate (newObject);
 		}
@@ -159,15 +165,15 @@ public class asset_import : EditorWindow {
     }
 
 	private void CreateDoorPrefab(){
-		string guid = AssetDatabase.CreateFolder("Assets/Prefabs/Level/Doors", name);
-		string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + ".prefab");
+		AssetDatabase.CreateFolder("Assets/Prefabs/Level/Doors", objectName);
+		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + objectName + "/" + objectName + ".prefab");
 		GameObject newObject = new GameObject();
 		SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 		sr.sprite = singleSprite;
 		BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+		bc.size = singleSprite.bounds.size;
 		door_behavior db = newObject.AddComponent<door_behavior>() as door_behavior;
-		db.open_spr = singleSprite;
+		db.open_spr = singleSprite; 
 		db.close_spr = animation[numFrames - 1];
 		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 		DestroyImmediate (newObject);
