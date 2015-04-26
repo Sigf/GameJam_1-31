@@ -15,7 +15,7 @@ public class asset_import : EditorWindow {
 	private int selectedType = 0;
 	private bool tileSet = false;
 	private bool destructible = false;
-	private int framesOfDestruction;
+	private int numFrames;
 	private string name;
 	private string[] types = new string[]{"Floor", "Wall", "Door", "Obstacle", "Enemy", "Playable Character"};
 	private string assetPath;
@@ -43,7 +43,7 @@ public class asset_import : EditorWindow {
 			DisplayWallOptions ();
 		}
 		if(selectedType == 2){
-			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
+			DisplayDoorOptions();
 		}
 		if(selectedType == 3){
 			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
@@ -63,7 +63,7 @@ public class asset_import : EditorWindow {
 				CreateWallPrefab ();
             }
 			if(selectedType == 2){
-                
+				CreateDoorPrefab();
             }
 			if(selectedType == 3){
                 
@@ -91,16 +91,28 @@ public class asset_import : EditorWindow {
 
 
 		if(destructible){
-			framesOfDestruction = EditorGUILayout.IntField("How Many Frames?", framesOfDestruction);
-			if(framesOfDestruction > 0 && (animation == null || animation.Length != framesOfDestruction)){
-				animation = new Sprite[framesOfDestruction];
+			numFrames = EditorGUILayout.IntField("How Many Frames?", numFrames);
+			if(numFrames > 0 && (animation == null || animation.Length != numFrames)){
+				animation = new Sprite[numFrames];
 			}
-			for(int i = 0; i < framesOfDestruction; i++){
+			for(int i = 0; i < numFrames; i++){
 				animation[i] = (Sprite)EditorGUILayout.ObjectField("Level " + (i + 1), animation[i], typeof(Sprite), false);
             }
 
         }
     }
+
+	private void DisplayDoorOptions(){
+		name = EditorGUILayout.TextField("Name", name);
+		singleSprite = (Sprite)EditorGUILayout.ObjectField("Closed Door", singleSprite, typeof(Sprite), false);
+		numFrames = EditorGUILayout.IntField("How Many Frames?", numFrames);
+		if(numFrames > 0 && (animation == null || animation.Length != numFrames)){
+			animation = new Sprite[numFrames];
+		}
+		for(int i = 0; i < numFrames; i++){
+			animation[i] = (Sprite)EditorGUILayout.ObjectField("Level " + (i + 1), animation[i], typeof(Sprite), false);
+		}
+	}
     
     private void CreateFloorPrefab(){
 		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Floor Tiles/" + name + ".prefab");
@@ -114,7 +126,7 @@ public class asset_import : EditorWindow {
     }
     private void CreateWallPrefab(){
 		Object newPrefab;
-		if(destructible && framesOfDestruction > 0){
+		if(destructible && numFrames > 0){
 			string guid = AssetDatabase.CreateFolder("Assets/Prefabs/Level/Wall Tiles/Destructible", name);
 			string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
 			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructible/" + name + "/" + name + ".prefab");
@@ -124,7 +136,7 @@ public class asset_import : EditorWindow {
 			BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
             DestroyImmediate (newObject);
-			for(int i = 0; i < framesOfDestruction; i++){
+			for(int i = 0; i < numFrames; i++){
 				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructible/" + name + "/" + name + (i+1) + ".prefab");
 				newObject = new GameObject();
 				sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
@@ -133,7 +145,7 @@ public class asset_import : EditorWindow {
 				PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
                 DestroyImmediate (newObject);
             }
-			System.Array.Clear (animation, 0, framesOfDestruction);
+			System.Array.Clear (animation, 0, numFrames);
 		}
 
 		else{
@@ -148,4 +160,33 @@ public class asset_import : EditorWindow {
 
         this.Close();
     }
+
+	private void CreateDoorPrefab(){
+		string guid = AssetDatabase.CreateFolder("Assets/Prefabs/Level/Doors", name);
+		string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
+		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + " Closed" + ".prefab");
+		GameObject newObject = new GameObject();
+		SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+		sr.sprite = singleSprite;
+		BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
+		DestroyImmediate (newObject);
+		for(int i = 0; i < numFrames; i++){
+			if(i == numFrames - 1){
+				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + " Open" + ".prefab");
+			}
+			else{
+				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + (i+1) + ".prefab");
+			}
+			newObject = new GameObject();
+			sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+			sr.sprite = animation[i];
+			bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
+			DestroyImmediate (newObject);
+		}
+		System.Array.Clear (animation, 0, numFrames);
+
+		this.Close();
+	}
 }
