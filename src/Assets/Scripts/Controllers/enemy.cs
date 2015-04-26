@@ -14,7 +14,7 @@ public class enemy : MonoBehaviour {
 	}
 
 	public void ProcessHit(Ability hit){
-		Debug.Log ("Hit by " + hit.GetType() + " and took " + hit.getDamage() + "damage");
+		Debug.Log ("Hit by " + hit.GetType() + " and took " + hit.getDamage() + " Damage");
 	}
 
 }
