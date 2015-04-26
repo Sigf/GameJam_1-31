@@ -47,13 +47,13 @@ public class asset_import : EditorWindow {
 			DisplayDoorOptions();
 		}
 		if(selectedType == 3){
-			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
+			DisplayObstacleOptions();
 		}
 		if(selectedType == 4){
-			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
+			DisplayEnemyOptions ();
 		}
 		if(selectedType == 5){
-			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
+			DisplayPlayableOptions();
 		}
 
 		if (GUILayout.Button ("Import")) {
@@ -91,16 +91,38 @@ public class asset_import : EditorWindow {
 				}
             }
 			if(selectedType == 3){
-                
+				if(objectName == ""){
+					Debug.LogError ("Please enter a valid name");
+				}
+				else if(singleSprite == null){
+					Debug.LogError("Please assign a sprite");
+				}
+				else{
+					CreateObstaclePrefab();
+				}
             }
 			if(selectedType == 4){
-                
+				if(objectName == ""){
+					Debug.LogError ("Please enter a valid name");
+				}
+				else if(singleSprite == null){
+					Debug.LogError("Please assign a sprite");
+				}
+				else{
+					CreateEnemyPrefab();
+				}
             }
 			if(selectedType == 5){
-                
+				if(objectName == ""){
+					Debug.LogError ("Please enter a valid name");
+				}
+				else if(singleSprite == null){
+					Debug.LogError("Please assign a sprite");
+				}
+				else{
+					CreatePlayablePrefab();
+				}
             }
-
-
 		}
 	}
 
@@ -138,6 +160,19 @@ public class asset_import : EditorWindow {
 		for(int i = 0; i < numFrames; i++){
 			animation[i] = (Sprite)EditorGUILayout.ObjectField("Level " + (i + 1), animation[i], typeof(Sprite), false);
 		}
+	}
+
+	private void DisplayObstacleOptions(){
+		objectName = EditorGUILayout.TextField("Name", objectName);
+		singleSprite = (Sprite)EditorGUILayout.ObjectField("Floor Sprite", singleSprite, typeof(Sprite), false);
+	}
+
+	private void DisplayEnemyOptions(){
+		objectName = EditorGUILayout.TextField("Name", objectName);
+	}
+
+	private void DisplayPlayableOptions(){
+		objectName = EditorGUILayout.TextField("Name", objectName);
 	}
     
     private void CreateFloorPrefab(){
@@ -203,6 +238,31 @@ public class asset_import : EditorWindow {
 		DestroyImmediate (newObject);
 		System.Array.Clear (animation, 0, numFrames);
 
+		this.Close();
+	}
+
+	private void CreateObstaclePrefab(){
+		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Floor Tiles/" + objectName + ".prefab");
+		GameObject newObject = new GameObject();
+		SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+		sr.sprite = singleSprite;
+		BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+		bc.size = singleSprite.bounds.size;
+		GameObject path = (GameObject)AssetDatabase.LoadAssetAtPath ("Assets/Prefabs/Path.prefab", typeof(GameObject));
+		GameObject pathInstance = (GameObject)Instantiate(path, newObject.transform.position, Quaternion.identity);
+		pathInstance.transform.parent = newObject.transform;
+		followPath fp = newObject.AddComponent<followPath>() as followPath;
+		fp.path = pathInstance.GetComponent<definePath>();
+		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
+		DestroyImmediate (newObject);
+		this.Close();
+	}
+
+	private void CreateEnemyPrefab(){
+		this.Close();
+	}
+
+	private void CreatePlayablePrefab(){
 		this.Close();
 	}
 }
