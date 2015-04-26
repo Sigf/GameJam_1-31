@@ -14,6 +14,7 @@ public class asset_import : EditorWindow {
 	private int selectedType = 0;
 	private bool destructable = false;
 	private int framesOfDestruction;
+	private string name;
 	private string[] types = new string[]{"Floor", "Wall", "Door", "Obstacle", "Enemy", "Playable Character"};
 	private string assetPath;
 	private Texture2D assetTexture;
@@ -34,7 +35,7 @@ public class asset_import : EditorWindow {
 
 		if(selectedType == 0){
 			singleSprite = (Sprite)EditorGUILayout.ObjectField("Floor Sprite", singleSprite, typeof(Sprite), false);
-
+			name = EditorGUILayout.TextField("Name", name);
 		}
 		if(selectedType == 1){
 			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
@@ -64,7 +65,8 @@ public class asset_import : EditorWindow {
 
 		if (GUILayout.Button ("Import")) {
 			if(selectedType == 0){
-
+				PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/" + name + ".prefab");
+				this.Close();
 			}
 			if(selectedType == 1){
                 
@@ -83,7 +85,6 @@ public class asset_import : EditorWindow {
             }
 
 
-			Debug.Log (assetPath);
 		}
 	}
 }
