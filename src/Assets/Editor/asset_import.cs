@@ -3,13 +3,6 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
-/*
- * This tool is to streamline the import of assets as they are for the most part
- * made of the same components. It will also set the correcct resolution and filter
- * mode. It will import the sprite to the sprite folder, create a prefab of of it and
- * put it in the ressource folder. It will give the user the option to add a collider.
- */
-
 public class asset_import : EditorWindow {
 
 	private int selectedType = 0;
@@ -19,13 +12,8 @@ public class asset_import : EditorWindow {
 	private int numFrames;
 	private string objectName = "";
 	private string[] types = new string[]{"Floor", "Wall", "Door", "Obstacle", "Enemy", "Playable Character"};
-	private string assetPath;
-	private Texture2D assetTexture;
-	private TextureImporter importer;
 
 	private Sprite singleSprite;
-	private Sprite[] tileSetSprites;
-	private Sprite[] animationList;
 	private Sprite[] animation;
 
 	[MenuItem("Window/Asset Import")]
@@ -181,12 +169,12 @@ public class asset_import : EditorWindow {
 		SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
 		sr.sprite = singleSprite;
 		BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
-
 		bc.size = singleSprite.bounds.size;
 		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 		DestroyImmediate (newObject);
         this.Close();
     }
+
     private void CreateWallPrefab(){
 		Object newPrefab;
 		if(destructible && numFrames > 0){
@@ -207,7 +195,6 @@ public class asset_import : EditorWindow {
 			newObject.tag = "Obstacles";
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
             DestroyImmediate (newObject);
-
 			System.Array.Clear (animation, 0, numFrames);
 		}
 
@@ -241,7 +228,6 @@ public class asset_import : EditorWindow {
 		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 		DestroyImmediate (newObject);
 		System.Array.Clear (animation, 0, numFrames);
-
 		this.Close();
 	}
 
