@@ -65,7 +65,12 @@ public class asset_import : EditorWindow {
 
 		if (GUILayout.Button ("Import")) {
 			if(selectedType == 0){
-				PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/" + name + ".prefab");
+				Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/" + name + ".prefab");
+				GameObject newObject = new GameObject();
+				SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+				sr.sprite = singleSprite;
+				BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+				PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 				this.Close();
 			}
 			if(selectedType == 1){
