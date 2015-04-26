@@ -171,21 +171,6 @@ public class asset_import : EditorWindow {
 		db.close_spr = animation[numFrames - 1];
 		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 		DestroyImmediate (newObject);
-		/*for(int i = 0; i < numFrames; i++){
-			if(i == numFrames - 1){
-				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + " Open" + ".prefab");
-			}
-			else{
-				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Doors/" + name + "/" + name + (i+1) + ".prefab");
-			}
-			newObject = new GameObject();
-			sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
-			sr.sprite = animation[i];
-			bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
-			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
-			DestroyImmediate (newObject);
-		}
-		*/
 		System.Array.Clear (animation, 0, numFrames);
 
 		this.Close();
