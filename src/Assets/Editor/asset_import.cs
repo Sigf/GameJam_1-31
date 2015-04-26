@@ -12,6 +12,7 @@ using System.Collections;
 public class asset_import : EditorWindow {
 
 	private int selectedType = 0;
+	private bool tileSet = false;
 	private bool destructable = false;
 	private int framesOfDestruction;
 	private string name;
@@ -21,6 +22,7 @@ public class asset_import : EditorWindow {
 	private TextureImporter importer;
 
 	private Sprite singleSprite;
+	private Sprite[] tileSetSprites;
 	private Sprite[] animationList;
 	private Sprite[] animation;
 
@@ -34,21 +36,10 @@ public class asset_import : EditorWindow {
 		selectedType = EditorGUILayout.Popup("Type", selectedType, types);
 
 		if(selectedType == 0){
-			singleSprite = (Sprite)EditorGUILayout.ObjectField("Floor Sprite", singleSprite, typeof(Sprite), false);
-			name = EditorGUILayout.TextField("Name", name);
+			DisplayFloorOptions ();
 		}
 		if(selectedType == 1){
-			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
-			destructable = EditorGUILayout.Toggle("Destructable?", destructable);
-			if(destructable){
-				framesOfDestruction = EditorGUILayout.IntField("How Many Frames?", framesOfDestruction);
-				if(framesOfDestruction > 0){
-					animation = new Sprite[framesOfDestruction];
-				}
-				for(int i = 0; i < framesOfDestruction; i++){
-					animation[i] = (Sprite)EditorGUILayout.ObjectField("Level " + (i + 1), animation[i], typeof(Sprite), false);
-                }
-            }
+			DisplayWallOptions ();
 		}
 		if(selectedType == 2){
 			singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
@@ -65,22 +56,10 @@ public class asset_import : EditorWindow {
 
 		if (GUILayout.Button ("Import")) {
 			if(selectedType == 0){
-				Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/" + name + ".prefab");
-				GameObject newObject = new GameObject();
-				SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
-				sr.sprite = singleSprite;
-				BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
-				PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
-				this.Close();
+				CreateFloorPrefab();
 			}
 			if(selectedType == 1){
-				Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/" + name + ".prefab");
-				GameObject newObject = new GameObject();
-				SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
-				sr.sprite = singleSprite;
-				BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
-				PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
-				this.Close();
+				CreateWallPrefab ();
             }
 			if(selectedType == 2){
                 
@@ -98,4 +77,76 @@ public class asset_import : EditorWindow {
 
 		}
 	}
+
+	private void DisplayFloorOptions(){
+		singleSprite = (Sprite)EditorGUILayout.ObjectField("Floor Sprite", singleSprite, typeof(Sprite), false);
+		name = EditorGUILayout.TextField("Name", name);
+	}
+
+	private void DisplayWallOptions(){
+		name = EditorGUILayout.TextField("Name", name);
+		singleSprite = (Sprite)EditorGUILayout.ObjectField("Wall Sprite", singleSprite, typeof(Sprite), false);
+		destructable = EditorGUILayout.Toggle("Destructable?", destructable);
+
+
+		if(destructable){
+			framesOfDestruction = EditorGUILayout.IntField("How Many Frames?", framesOfDestruction);
+			if(framesOfDestruction > 0 && animation.Length != framesOfDestruction){
+				animation = new Sprite[framesOfDestruction];
+			}
+			for(int i = 0; i < framesOfDestruction; i++){
+				animation[i] = (Sprite)EditorGUILayout.ObjectField("Level " + (i + 1), animation[i], typeof(Sprite), false);
+				if(animation[i] != null){
+					Debug.Log (animation[i].name);
+				}
+
+            }
+        }
+    }
+    
+    private void CreateFloorPrefab(){
+		Object newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Floor Tiles/" + name + ".prefab");
+		GameObject newObject = new GameObject();
+		SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+		sr.sprite = singleSprite;
+		BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+		PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
+		DestroyImmediate (newObject);
+        this.Close();
+    }
+    private void CreateWallPrefab(){
+		Object newPrefab;
+		if(destructable && framesOfDestruction > 0){
+			string guid = AssetDatabase.CreateFolder("Assets/Prefabs/Level/Wall Tiles/Destructable", name);
+			string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
+			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructable/" + name + "/" + name + ".prefab");
+			GameObject newObject = new GameObject();
+			SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+			sr.sprite = singleSprite;
+			BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
+            DestroyImmediate (newObject);
+			for(int i = 0; i < framesOfDestruction; i++){
+				newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/Destructable/" + name + "/" + name + (i+1) + ".prefab");
+				newObject = new GameObject();
+				sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+				sr.sprite = animation[i];
+				bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+				PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
+                DestroyImmediate (newObject);
+            }
+		}
+
+		else{
+			newPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefabs/Level/Wall Tiles/" + name + ".prefab");
+			GameObject newObject = new GameObject();
+			SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+			sr.sprite = singleSprite;
+			BoxCollider2D bc = newObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
+			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
+            DestroyImmediate (newObject);
+		}
+
+        this.Close();
+    }
 }
