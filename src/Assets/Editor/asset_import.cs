@@ -1,4 +1,5 @@
-﻿
+﻿//TODO: Enemy and playable creators still need to be finished.  The playable character is setup, we just need to finish up setting up the controller in terms of animation so I can properly get things assigned
+
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
@@ -214,9 +215,7 @@ public class asset_import : EditorWindow {
 			{
 				animation[i] = (Sprite)EditorGUILayout.ObjectField("Level " + (i + 1), animation[i], typeof(Sprite), false);
             }
-
         }
-
     }
 
 
@@ -230,11 +229,11 @@ public class asset_import : EditorWindow {
 		{
 			animation = new Sprite[numFrames];
 		}
+
 		for(int i = 0; i < numFrames; i++)
 		{
 			animation[i] = (Sprite)EditorGUILayout.ObjectField("Level " + (i + 1), animation[i], typeof(Sprite), false);
 		}
-
 	}
 
 	private void DisplayObstacleOptions()
@@ -264,9 +263,7 @@ public class asset_import : EditorWindow {
 			{
 				data.animationList[i][j] = (Sprite)EditorGUILayout.ObjectField("Frame " + (j + 1), data.animationList[i][j], typeof(Sprite), false);
 			}
-
 		}
-
 	}
     
     private void CreateFloorPrefab()
@@ -285,6 +282,7 @@ public class asset_import : EditorWindow {
 		DestroyImmediate (newObject);
 
         this.Close();
+
     }
 
     private void CreateWallPrefab()
@@ -340,16 +338,10 @@ public class asset_import : EditorWindow {
 			PrefabUtility.ReplacePrefab(newObject, newPrefab, ReplacePrefabOptions.ConnectToPrefab);
 
             DestroyImmediate (newObject);
-
-
 		}
 
 		this.Close();
-
 	}
-
-        
-    
 
 	private void CreateDoorPrefab()
 	{
@@ -407,11 +399,13 @@ public class asset_import : EditorWindow {
 		this.Close();
 	}
 
-	private void CreateEnemyPrefab(){
+	private void CreateEnemyPrefab()
+	{
 		this.Close();
 	}
 
-	private void CreatePlayablePrefab(){
+	private void CreatePlayablePrefab()
+	{
 		this.Close();
 	}
 }
