@@ -86,7 +86,9 @@ public class Ray_Attack : MonoBehaviour {
 		
 		if (hit) {
 			//Debug.DrawLine(player_pos, hit.point, Color.red, 0.0f ,false);
-
+			if(hit.transform.gameObject.tag.Equals ("Enemy")){
+				hit.transform.gameObject.SendMessage("ProcessHit", ability);
+			}
 			float ray_width = 0.08f;
 			float distance = hit.distance;
 

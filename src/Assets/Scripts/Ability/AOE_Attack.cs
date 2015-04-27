@@ -29,6 +29,12 @@ public class AOE_Attack : MonoBehaviour {
         
     }
 
+	void OnTriggerStay2D(Collider2D other){
+		if(other.tag.Equals ("Enemy")){
+			other.SendMessage("ProcessHit", ability);
+		}
+	}
+
 	public void init(Ability ability)
 	{
 		startTime = Time.time;
@@ -68,4 +74,6 @@ public class AOE_Attack : MonoBehaviour {
 		Debug.Log ("Radius is " + radius);
 		this.transform.localScale = newScale;
 	}
+
+
 }
