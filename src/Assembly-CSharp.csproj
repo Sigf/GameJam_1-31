@@ -48,7 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AI\Obstacle.cs" />
      <Compile Include="Assets\Scripts\AI\definePath.cs" />
+     <Compile Include="Assets\Scripts\AI\enemyAI.cs" />
+     <Compile Include="Assets\Scripts\AI\enemyAISettings.cs" />
      <Compile Include="Assets\Scripts\AI\followPath.cs" />
+     <Compile Include="Assets\Scripts\AI\mothership.cs" />
      <Compile Include="Assets\Scripts\AI\obstacleAI.cs" />
      <Compile Include="Assets\Scripts\Ability\AOE_Attack.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityAOE.cs" />
@@ -64,7 +67,7 @@
      <Compile Include="Assets\Scripts\Controllers\charController2D.cs" />
      <Compile Include="Assets\Scripts\Controllers\charControllerParameters.cs" />
      <Compile Include="Assets\Scripts\Controllers\controllerState.cs" />
-     <Compile Include="Assets\Scripts\Controllers\enemy.cs" />
+     <Compile Include="Assets\Scripts\Controllers\enemyStats.cs" />
      <Compile Include="Assets\Scripts\Controllers\follow_mouse.cs" />
      <Compile Include="Assets\Scripts\Controllers\player.cs" />
      <Compile Include="Assets\Scripts\Controllers\player_pickup.cs" />

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class enemy : MonoBehaviour {
+public class enemyStats : MonoBehaviour {
 	public Ability _ability;
 	public float hp;
 	public bool isInvulnerable;

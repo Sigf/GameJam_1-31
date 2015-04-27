@@ -21,8 +21,7 @@ public class obstacleAI : MonoBehaviour {
 		FieldInfo[] fields = parameters.GetType().GetFields(flags);
 		foreach (FieldInfo fieldInfo in fields)
 		{
-			Debug.Log("Obj: parameters" + ", Field: " + fieldInfo.Name + ": " + fieldInfo.GetValue(parameters));
+			Debug.Log(fieldInfo.Name + ": " + fieldInfo.GetValue(parameters));
 		}
-
 	}
 }

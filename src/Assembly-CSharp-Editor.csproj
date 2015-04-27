@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\asset_import.cs" />
+     <Compile Include="Assets\Editor\enemyEditor.cs" />
      <Compile Include="Assets\Editor\level_loader.cs" />
      <Compile Include="Assets\Editor\obstacleEditor.cs" />
      <Compile Include="Assets\Editor\room_maker.cs" />
