@@ -113,6 +113,8 @@ public class obstacleEditor : Editor
 			DestroyImmediate (findChild.gameObject);
 		}
 
+		_AI.parameters.firePoint = null;
+
 		fixedPointCreated = false;
 	}
 }
