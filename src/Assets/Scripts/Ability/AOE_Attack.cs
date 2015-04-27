@@ -71,7 +71,6 @@ public class AOE_Attack : MonoBehaviour {
 			break;
 		}
 		Vector3 newScale = new Vector3(radius, radius, 0.0f);
-		Debug.Log ("Radius is " + radius);
 		this.transform.localScale = newScale;
 	}
 
