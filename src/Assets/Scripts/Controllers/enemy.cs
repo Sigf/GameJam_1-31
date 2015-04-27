@@ -4,6 +4,7 @@ using System.Collections;
 public class enemy : MonoBehaviour {
 	public Ability _ability;
 	public float hp;
+	public bool isInvulnerable;
 
 	private SpriteRenderer _sr;
 	private bool onHitCD;
@@ -17,6 +18,9 @@ public class enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(isInvulnerable){
+			return;
+		}
 		if(onHitCD){
 			_sr.color = new Color(1.0f, 0.0f, 0.0f);
 			if(Time.time - hitTime >= hitCD){
@@ -27,6 +31,9 @@ public class enemy : MonoBehaviour {
 	}
 
 	public void ProcessHit(Ability hit){
+		if(isInvulnerable){
+			return;
+		}
 		Debug.Log ("Hit by " + hit.GetType() + " and took " + hit.getDamage() + " Damage");
 		if(!onHitCD){
 			hp -= hit.getDamage ();

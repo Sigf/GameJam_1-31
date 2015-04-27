@@ -46,8 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AI\Obstacle.cs" />
      <Compile Include="Assets\Scripts\AI\definePath.cs" />
      <Compile Include="Assets\Scripts\AI\followPath.cs" />
+     <Compile Include="Assets\Scripts\AI\obstacleAI.cs" />
+     <Compile Include="Assets\Scripts\AI\obstacleEditor.cs" />
      <Compile Include="Assets\Scripts\Ability\AOE_Attack.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityAOE.cs" />
      <Compile Include="Assets\Scripts\Ability\Ability Subclasses\abilityProjectile.cs" />
