@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Editor\asset_import.cs" />
      <Compile Include="Assets\Editor\level_loader.cs" />
+     <Compile Include="Assets\Editor\obstacleEditor.cs" />
      <Compile Include="Assets\Editor\room_maker.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
